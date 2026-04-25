@@ -50,6 +50,12 @@ For a portfolio or application, share:
 
 The website gives a fast entry point. The paper should be used to show the statistical analysis, experimental design, calibration results, and reproducibility of the benchmark.
 
+The deployed website also serves the paper at:
+
+```text
+/paper.pdf
+```
+
 ## Pre-Deployment Checklist
 
 Before deploying:

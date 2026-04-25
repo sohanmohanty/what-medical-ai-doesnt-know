@@ -47,6 +47,9 @@ export default async function HomePage() {
             <Link className="button-secondary" href="#how-to-read-it">
               See how it works
             </Link>
+            <a className="button-secondary" href="/paper.pdf">
+              Read the paper
+            </a>
           </div>
 
           <p className="mt-6 max-w-2xl text-sm leading-7 text-muted">
@@ -176,6 +179,9 @@ export default async function HomePage() {
             <Link className="button-primary" href="/explorer">
               Open the explorer
             </Link>
+            <a className="button-secondary" href="/paper.pdf">
+              Read the paper
+            </a>
             <Link className="button-secondary" href="/methodology">
               Read the methodology
             </Link>

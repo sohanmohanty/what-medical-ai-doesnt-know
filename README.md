@@ -40,6 +40,7 @@ The main lesson is that a model can still rank cases reasonably well while its r
 
 - `web/` contains the Next.js interactive explorer.
 - `report/paper.pdf` is the formatted research paper.
+- `web/public/paper.pdf` is the deployable website copy of the paper.
 - `report/paper.md` is the paper source.
 - `report/paper_artifact_map.md` maps claims in the paper to saved artifacts.
 - `artifacts/frontend/paper_core_explorer.json` is the static JSON consumed by the app.
@@ -94,6 +95,8 @@ python scripts\export_frontend_artifacts.py
 ```
 
 The research source of truth remains in `results/`, `figures/`, `artifacts/`, and `report/`. The website is the interpretation layer that makes those outputs easier to explore.
+
+The deployed site also serves the formatted paper directly at `/paper.pdf`.
 
 ## Reproduce The Research Pipeline
 
