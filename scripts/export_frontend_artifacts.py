@@ -15,6 +15,7 @@ SUMMARY_INPUT = ROOT / "results" / "metrics" / "paper_core_summary.csv"
 PREDICTIONS_INPUT = ROOT / "results" / "predictions" / "paper_core_predictions.csv"
 BASELINE_PREDICTIONS_INPUT = ROOT / "results" / "predictions" / "baseline_predictions.csv"
 DEFAULT_OUTPUT = ROOT / "artifacts" / "frontend" / "paper_core_explorer.json"
+WEB_DATA_OUTPUT = ROOT / "web" / "data" / "paper_core_explorer.json"
 
 DATASET_METADATA = {
     "wdbc": {
@@ -509,9 +510,13 @@ def build_payload(
 
 def main():
     payload = build_payload()
+    serialized = json.dumps(payload, indent=2)
     DEFAULT_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    DEFAULT_OUTPUT.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    DEFAULT_OUTPUT.write_text(serialized, encoding="utf-8")
+    WEB_DATA_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    WEB_DATA_OUTPUT.write_text(serialized, encoding="utf-8")
     print(f"Saved frontend artifact to {DEFAULT_OUTPUT}")
+    print(f"Saved deployable web copy to {WEB_DATA_OUTPUT}")
 
 
 if __name__ == "__main__":

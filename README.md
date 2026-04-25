@@ -72,6 +72,27 @@ cd C:\path\to\robust-missing-clinical-ml\web
 & "C:\Program Files\nodejs\npm.cmd" run dev
 ```
 
+## Publish A Clickable Website
+
+For admissions readers or judges, the website should be deployed as a normal public link rather than requiring anyone to download the repo.
+
+The simplest path is:
+
+1. Create a GitHub account.
+2. Push this repository to GitHub.
+3. Create a Vercel account and import the GitHub repository.
+4. Set the Vercel project root directory to `web`.
+5. Use the default Next.js build command, `npm run build`.
+6. Deploy and share the generated `vercel.app` URL.
+
+The web app is designed for this workflow. It reads a deployable artifact at `web/data/paper_core_explorer.json`, which is refreshed by:
+
+```powershell
+python scripts\export_frontend_artifacts.py
+```
+
+The research source of truth remains in `results/`, `figures/`, `artifacts/`, and `report/`. The website is the interpretation layer that makes those outputs easier to explore.
+
 ## Reproduce The Research Pipeline
 
 Create a Python environment:
@@ -146,6 +167,7 @@ Useful documentation files:
 
 - `docs/project-brief.md`: project purpose and audience.
 - `docs/architecture.md`: how the benchmark, artifacts, and web app fit together.
+- `docs/deployment.md`: how to publish the web app as a clickable public link.
 - `docs/methodology.md`: explanation of datasets, missingness, models, and metrics.
 - `docs/migration-plan.md`: completed migration work and future development path.
 - `docs/content-strategy.md`: public-facing language and narrative guardrails.
