@@ -2,7 +2,8 @@
 
 ## Project Summary
 
-**Working title:** What Medical AI Doesn't Know  
+**Working title:** What Medical AI Doesn't Know
+
 **Subtitle:** An interactive explorer of missing data, calibration, and trust in clinical prediction.
 
 This project turns an existing clinical machine learning robustness benchmark into a polished, public-facing web experience. The research benchmark remains the analytical engine, but the flagship identity becomes a user-facing product about a harder and more human question:
