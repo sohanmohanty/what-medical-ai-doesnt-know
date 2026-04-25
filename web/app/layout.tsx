@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   title: "What Medical AI Doesn't Know",
   description:
     "An interactive explorer of missing data, calibration, and trust in clinical prediction.",
+  authors: [{ name: "Sohan Mohanty" }],
 };
 
 export default function RootLayout({

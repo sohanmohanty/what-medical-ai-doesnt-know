@@ -5,7 +5,7 @@ export function SiteFooter() {
         <p>
           Educational clinical ML project about missing data, calibration, and trust.
         </p>
-        <p>Not medical advice. Not a diagnostic tool. No personal health data is collected.</p>
+        <p>Created by Sohan Mohanty. (c) 2026. All rights reserved.</p>
       </div>
     </footer>
   );

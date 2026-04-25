@@ -2,11 +2,15 @@
 
 An interactive research project about clinical machine learning under missing data.
 
+Created by Sohan Mohanty.
+
 This repository combines a reproducible Python benchmark with a polished web explorer and a scholarly report. The central question is simple:
 
 > How much should we trust a medical prediction model when part of the patient record is missing?
 
 The project is educational and research-oriented. It is not medical advice, not a diagnosis tool, not a symptom checker, and it does not collect user medical data.
+
+Copyright (c) 2026 Sohan Mohanty. All rights reserved.
 
 ## Start Here
 
@@ -154,6 +158,12 @@ pytest
 - `report/` contains the paper and artifact map.
 - `tests/` contains automated integrity checks.
 - `notebooks/` contains supporting exploratory work.
+
+## Authorship And Use
+
+This project was created by Sohan Mohanty as an independent research and portfolio project. If you reference the work, please cite the repository using `CITATION.cff`.
+
+This repository is currently shared without an open-source license. Unless a license is added later, no permission is granted for reuse, redistribution, or derivative works beyond normal viewing and evaluation.
 
 ## Research Design
 

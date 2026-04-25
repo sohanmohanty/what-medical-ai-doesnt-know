@@ -297,6 +297,18 @@ class PaperRenderer:
         self.line(LEFT + 1.15, self.y, PAGE_W - RIGHT - 1.15, self.y, TEAL, 1.1)
         self.y -= 0.36
 
+    def render_author(self, author: str) -> None:
+        self.text(
+            PAGE_W / 2,
+            self.y + 0.18,
+            author,
+            size=10.2,
+            family=SERIF,
+            color=INK,
+            ha="center",
+        )
+        self.y -= 0.06
+
     def render_abstract(self, text: str) -> None:
         lines = wrap_text(text, 9.7, width=CONTENT_W)
         line_h = 9.7 / 72 * 1.45
@@ -456,6 +468,12 @@ def render_pdf(blocks: list[Block]) -> None:
         if blocks and blocks[0].kind == "heading" and blocks[0].level == 1:
             renderer.render_title(blocks[0].text)
             index = 1
+
+        if index < len(blocks) and blocks[index].kind == "paragraph":
+            next_block = blocks[index + 1] if index + 1 < len(blocks) else None
+            if next_block and next_block.kind == "heading" and next_block.text.lower() == "abstract":
+                renderer.render_author(blocks[index].text)
+                index += 1
 
         if (
             index + 1 < len(blocks)

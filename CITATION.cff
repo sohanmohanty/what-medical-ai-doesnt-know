@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use or reference this project, please cite it as below."
+title: "What Medical AI Doesn't Know"
+authors:
+  - family-names: "Mohanty"
+    given-names: "Sohan"
+year: 2026
+date-released: "2026-04-25"
+repository-code: "https://github.com/sohanmohanty/what-medical-ai-doesnt-know"
+url: "https://github.com/sohanmohanty/what-medical-ai-doesnt-know"
+abstract: "A reproducible benchmark and interactive explorer for studying clinical machine learning robustness, calibration, and trust under missing data."
+keywords:
+  - clinical machine learning
+  - missing data
+  - calibration
+  - robustness
+  - uncertainty
