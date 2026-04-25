@@ -1,9 +1,9 @@
-# When Medical AI Doesn't Know
+# What Medical AI Doesn't Know
 
 This repository now has two connected layers:
 
 - a **config-driven research benchmark** for studying how clinical machine learning models behave when inputs are partially missing
-- a **public-facing web app scaffold** that turns those results into an interactive story about calibration, uncertainty, and trust
+- a **public-facing web app** that turns those results into an interactive story about calibration, uncertainty, and trust
 
 The benchmark is the engine. The app is the portfolio-facing identity.
 
@@ -26,7 +26,7 @@ For each dataset, the framework can:
 This repository can now be used in two ways:
 
 - **Research mode:** rerun benchmarks, inspect saved artifacts, and extend the experimental framework
-- **Product mode:** use the exported artifacts and `web/` app scaffold to present the work as an interactive project about trustworthy medical AI under uncertainty
+- **Product mode:** use the exported artifacts and `web/` app to present the work as an interactive project about trustworthy medical AI under uncertainty
 
 ## Read This First
 
@@ -38,7 +38,7 @@ If you are new to the repo, start here:
 - `report/paper.md` and `report/paper.pdf` for the write-up
 - `scripts/run_paper_core.ps1` for the canonical paper-facing benchmark run
 - `scripts/export_frontend_artifacts.py` for the benchmark-to-app bridge
-- `web/` for the Next.js app scaffold
+- `web/` for the Next.js app
 - `src/experiments/run_configured_experiment.py` for the main official runner
 - `configs/` for the experiment definitions
 - `results/` and `figures/` for the saved outputs
@@ -53,7 +53,7 @@ If you are new to the repo, start here:
 - `results/` holds numeric outputs such as metrics, predictions, manifests, and masks.
 - `figures/` holds image outputs.
 - `artifacts/frontend/` holds precomputed JSON files for the web app.
-- `web/` holds the Next.js + TypeScript public-facing application scaffold.
+- `web/` holds the Next.js + TypeScript public-facing application.
 - `docs/` holds the product brief, architecture notes, methodology, migration plan, and next-step docs.
 - `report/` holds the paper and the paper artifact map.
 - `tests/` holds the automated integrity checks.
@@ -258,7 +258,7 @@ npm install
 npm run dev
 ```
 
-The current scaffold includes:
+The current web app includes:
 
 - a landing page
 - an explorer with general and technical modes

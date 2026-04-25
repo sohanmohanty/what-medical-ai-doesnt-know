@@ -2,7 +2,7 @@
 
 ## What To Build Next
 
-1. Add feature-level missingness summaries so the explorer can support honest missing-feature toggles instead of structural placeholders.
+1. Add feature-level missingness summaries so the example inputs can become honest feature-impact controls.
 2. Export clean-baseline reliability views for every dataset-model pair, not only the currently available baseline artifacts.
 3. Create a "trust state" legend tied to exact metric thresholds and document those thresholds in the methodology page.
 4. Add a scenario comparison view so visitors can compare two models side by side under the same missingness pattern.

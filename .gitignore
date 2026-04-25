@@ -21,6 +21,7 @@ web/node_modules/
 web/.next/
 web/out/
 web/.vercel/
+web/tsconfig.tsbuildinfo
 
 Thumbs.db
 .DS_Store

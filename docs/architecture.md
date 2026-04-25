@@ -10,7 +10,7 @@ The current repository is already a strong research system. Its strongest qualit
 - automated checks in `tests/`
 - a canonical paper-facing path centered on `paper_core`
 
-In other words, the repo already contains a real engine. It is not missing technical depth. It is missing a public-facing product layer.
+In other words, the repo already contains a real engine. The current architecture preserves that engine and adds a public-facing product layer on top.
 
 ## What The Repo Currently Does
 
@@ -52,9 +52,9 @@ These are valuable, but they are not enough for a flagship portfolio app on thei
 - no interaction model for nontechnical visitors
 - no deterministic explanation system translating metrics into plain language
 
-## What Is Missing For A User-Facing Application
+## What The User-Facing Application Adds
 
-The missing pieces are mostly product-facing rather than model-facing:
+The user-facing layer is intentionally product-facing rather than model-facing:
 
 - a polished web frontend
 - a frontend-friendly artifact format
@@ -117,9 +117,9 @@ Canonical benchmark run
   -> interactive UI + deterministic explanation layer
 ```
 
-## Frontend Contract For MVP
+## Frontend Contract
 
-The first JSON artifact should expose:
+The JSON artifact exposes:
 
 - dataset metadata and plain-English descriptions
 - model metadata and positioning notes
@@ -129,7 +129,7 @@ The first JSON artifact should expose:
 - clean-vs-corrupt deltas
 - a derived stability/trust score
 
-This is enough for:
+This supports:
 
 - landing page context
 - a functional explorer shell

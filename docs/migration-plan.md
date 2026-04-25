@@ -30,14 +30,14 @@ The strongest technical move is to preserve the research core and add a presenta
 
 ### Objectives
 
-- create the initial `web/` scaffold
+- create the initial `web/` application
 - establish design language and navigation
 - build landing, explorer shell, methodology, and about pages
-- wire the app to a real frontend artifact instead of placeholder prose only
+- wire the app to a real frontend artifact instead of static prose only
 
 ### Status
 
-- in progress in this pass
+- complete for the first working version
 
 ## Phase 3: Benchmark Integration
 
@@ -53,6 +53,11 @@ The strongest technical move is to preserve the research core and add a presenta
 - `scripts/export_frontend_artifacts.py`
 - `artifacts/frontend/paper_core_explorer.json`
 - frontend data loader and explorer state model
+
+### Status
+
+- complete for scenario-level benchmark integration
+- reliability views and model comparison are powered by saved artifact data
 
 ## Phase 4: Technical Storytelling
 
@@ -97,11 +102,11 @@ The strongest technical move is to preserve the research core and add a presenta
 
 ## Immediate Next Build Steps
 
-- wire the explorer to real rate-by-rate stress trends
-- export reliability-diagram payloads from the canonical run
-- add deterministic explanation templates per trust state
+- add richer feature-level missingness summaries
+- document trust-score thresholds in the methodology
+- refine mobile layouts and capture portfolio screenshots
 - introduce feature-dropout interaction only after artifact support exists
-- create portfolio-grade screenshots and deploy preview
+- deploy a preview build
 
 ## Definition Of "MVP Complete"
 

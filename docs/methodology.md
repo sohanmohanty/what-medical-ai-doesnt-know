@@ -78,8 +78,8 @@ The public-facing app should draw first from the canonical paper-facing benchmar
 
 - The datasets are public benchmarks, not live clinical systems.
 - The missingness mechanisms are controlled constructions, not learned from hospital workflows.
-- The MVP app is educational and analytical, not diagnostic.
-- Early app versions may summarize scenario-level trends before exposing richer fold-level calibration artifacts.
+- The public app is educational and analytical, not diagnostic.
+- The current app summarizes scenario-level trends and selected reliability views; future versions can expose richer fold-level calibration artifacts.
 
 ## How The App Should Talk About Results
 
