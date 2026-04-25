@@ -7,7 +7,7 @@ export default async function MethodologyPage() {
     <div className="space-y-10 pb-20">
       <section className="max-w-4xl">
         <p className="eyebrow">Methodology</p>
-        <h1 className="mt-6 text-5xl font-semibold leading-[0.98] text-ink sm:text-6xl">
+        <h1 className="mt-6 text-4xl font-semibold leading-[0.98] text-ink sm:text-6xl">
           The benchmark behind the experience
         </h1>
         <p className="mt-5 text-lg leading-9 text-muted">

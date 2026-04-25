@@ -16,7 +16,7 @@ export default async function HomePage() {
       <section className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
         <div>
           <p className="eyebrow">Interactive uncertainty explorer</p>
-          <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-[0.96] text-ink sm:text-6xl">
+          <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[0.98] text-ink sm:text-6xl">
             How much should we trust a medical model when part of the patient record is missing?
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-9 text-muted">
@@ -47,7 +47,7 @@ export default async function HomePage() {
             <Link className="button-secondary" href="#how-to-read-it">
               See how it works
             </Link>
-            <a className="button-secondary" href="/paper.pdf">
+            <a className="button-secondary" href="/paper">
               Read the paper
             </a>
           </div>
@@ -128,7 +128,7 @@ export default async function HomePage() {
       <section id="confidence-vs-trust" className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
         <article className="surface-panel p-7">
           <p className="eyebrow">Confidence vs. Trust</p>
-          <h2 className="mt-5 text-4xl font-semibold text-ink">
+          <h2 className="mt-5 text-3xl font-semibold text-ink sm:text-4xl">
             They sound similar, but they are not the same.
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-8 text-muted">
@@ -179,7 +179,7 @@ export default async function HomePage() {
             <Link className="button-primary" href="/explorer">
               Open the explorer
             </Link>
-            <a className="button-secondary" href="/paper.pdf">
+            <a className="button-secondary" href="/paper">
               Read the paper
             </a>
             <Link className="button-secondary" href="/methodology">
@@ -255,7 +255,7 @@ export default async function HomePage() {
         <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
             <p className="eyebrow">How to read it</p>
-            <h2 className="mt-5 text-4xl font-semibold text-ink">
+            <h2 className="mt-5 text-3xl font-semibold text-ink sm:text-4xl">
               From benchmark results to a clearer trust question
             </h2>
             <p className="mt-4 max-w-xl text-base leading-8 text-muted">

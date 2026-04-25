@@ -25,7 +25,7 @@ export function TrustMeter({
 
   return (
     <div className="surface-panel p-6">
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="eyebrow">Trust signal</p>
           <h3 className="mt-4 text-2xl font-semibold text-ink">{copy.label}</h3>

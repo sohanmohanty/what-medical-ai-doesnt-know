@@ -99,10 +99,10 @@ function ExampleInputsCard({ features }: { features: string[] }) {
         {features.map((feature) => (
           <div
             key={feature}
-            className="flex items-center justify-between rounded-2xl border border-line/80 bg-white/90 px-4 py-3"
+            className="flex flex-col items-start gap-2 rounded-2xl border border-line/80 bg-white/90 px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
           >
             <span className="text-sm text-ink">{feature}</span>
-            <span className="rounded-full bg-accent/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-accent">
+            <span className="shrink-0 rounded-full bg-accent/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-accent">
               Example signal
             </span>
           </div>
@@ -183,7 +183,7 @@ export function ExplorerClient({ data }: { data: ExplorerArtifact }) {
               <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
                 <div>
                   <p className="eyebrow">Interactive explorer</p>
-                  <h2 className="mt-4 text-3xl font-semibold text-ink sm:text-4xl">
+                  <h2 className="mt-4 text-3xl font-semibold leading-tight text-ink sm:text-4xl">
                     What changes when the model has to predict with missing information?
                   </h2>
                   <p className="mt-3 max-w-2xl text-base leading-8 text-muted">

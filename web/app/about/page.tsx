@@ -3,7 +3,7 @@ export default function AboutPage() {
     <div className="space-y-10 pb-20">
       <section className="max-w-4xl">
         <p className="eyebrow">About</p>
-        <h1 className="mt-6 text-5xl font-semibold leading-[0.98] text-ink sm:text-6xl">
+        <h1 className="mt-6 text-4xl font-semibold leading-[0.98] text-ink sm:text-6xl">
           A project about uncertainty, not just prediction.
         </h1>
         <p className="mt-5 text-lg leading-9 text-muted">
@@ -17,7 +17,7 @@ export default function AboutPage() {
       <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <article className="surface-panel p-7">
           <p className="eyebrow">Why this matters</p>
-          <h2 className="mt-5 text-4xl font-semibold text-ink">
+          <h2 className="mt-5 text-3xl font-semibold text-ink sm:text-4xl">
             High-stakes systems should be honest about uncertainty.
           </h2>
           <p className="mt-5 text-base leading-8 text-muted">
@@ -35,7 +35,7 @@ export default function AboutPage() {
 
         <article className="surface-panel p-7">
           <p className="eyebrow">Core idea</p>
-          <h2 className="mt-5 text-4xl font-semibold text-ink">
+          <h2 className="mt-5 text-3xl font-semibold text-ink sm:text-4xl">
             Missing information should change how much certainty we allow.
           </h2>
           <p className="mt-5 text-base leading-8 text-muted">
