@@ -92,14 +92,8 @@ Public benchmark datasets
   -> interactive explorer and explanation layer
 ```
 
-## Why There Is No Backend
+## Static Artifact Model
 
-A backend is unnecessary for the current version because:
+The current web app is intentionally static. Benchmark runs happen in Python, then a JSON artifact is exported for the interface. This keeps the public-facing experience reproducible, easy to deploy, and separate from any personal medical-data handling.
 
-- all benchmark results are precomputed
-- the project is educational and analytical, not transactional
-- no user medical data are collected
-- static artifacts are easier to audit and deploy
-- the app can be hosted as a simple frontend
-
-A backend should only be added later if the project needs dynamic scenario generation or richer artifact browsing that cannot be handled with static JSON.
+A server layer would only be useful for a later version that needs dynamic simulations or richer artifact browsing beyond precomputed results.
