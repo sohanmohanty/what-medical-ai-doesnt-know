@@ -16,8 +16,8 @@ OUTPUT = ROOT / "report" / "paper.pdf"
 
 PAGE_W = 8.5
 PAGE_H = 11.0
-LEFT = 0.82
-RIGHT = 0.82
+LEFT = 0.95
+RIGHT = 0.95
 TOP = 0.72
 BOTTOM = 0.78
 CONTENT_W = PAGE_W - LEFT - RIGHT
@@ -110,7 +110,9 @@ def parse_markdown(text: str) -> list[Block]:
 
 
 def wrap_text(text: str, font_size: float, width: float = CONTENT_W) -> list[str]:
-    average_char_width = font_size * 0.47
+    # Use a conservative character-width estimate because PDF text is not clipped
+    # to the logical column. This protects the right margin on long scientific lines.
+    average_char_width = font_size * 0.56
     max_chars = max(28, int(width * 72 / average_char_width))
     return textwrap.wrap(
         text,
@@ -144,16 +146,6 @@ class PaperRenderer:
         if self.fig is None:
             return
         footer_y = 0.38
-        self.line(LEFT, footer_y + 0.16, PAGE_W - RIGHT, footer_y + 0.16, "#e2edf0", 0.55)
-        self.text(
-            LEFT,
-            footer_y,
-            self.title[:72],
-            size=7.7,
-            family=SANS,
-            color=MUTED,
-            va="bottom",
-        )
         self.text(
             PAGE_W - RIGHT,
             footer_y,
@@ -256,26 +248,15 @@ class PaperRenderer:
         self.y -= 0.36
 
     def render_abstract(self, text: str) -> None:
-        lines = wrap_text(text, 9.5, width=CONTENT_W - 0.48)
-        line_h = 9.5 / 72 * 1.5
-        box_h = 0.58 + len(lines) * line_h + 0.22
-        self.ensure_space(box_h + 0.12)
-        self.rounded_box(LEFT, self.y, CONTENT_W, box_h, fill=WASH, edge=RULE)
-        box_y = self.y - 0.22
-        self.text(
-            LEFT + 0.24,
-            box_y,
-            "ABSTRACT",
-            size=8.3,
-            family=SANS,
-            weight="bold",
-            color=TEAL,
-        )
-        box_y -= 0.30
+        lines = wrap_text(text, 9.7, width=CONTENT_W)
+        line_h = 9.7 / 72 * 1.45
+        self.ensure_space(0.38 + len(lines) * line_h + 0.30)
+        self.text(LEFT, self.y, "Abstract", size=11, family=SERIF, weight="bold")
+        self.y -= 0.30
         for line in lines:
-            self.text(LEFT + 0.24, box_y, line, size=9.5, family=SERIF, color=INK)
-            box_y -= line_h
-        self.y -= box_h + 0.38
+            self.text(LEFT, self.y, line, size=9.7, family=SERIF, color=INK)
+            self.y -= line_h
+        self.y -= 0.20
 
     def render_heading(self, block: Block) -> None:
         if block.level == 2:
