@@ -16,7 +16,9 @@ export function SiteHeader() {
           <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-accent/20 bg-accentSoft text-base text-accent">
             WM
           </span>
-          <span className="hidden sm:block">What Medical AI Doesn&apos;t Know</span>
+          <span className="max-w-[12rem] text-xs leading-5 sm:max-w-none sm:text-sm">
+            What Medical AI Doesn&apos;t Know
+          </span>
         </Link>
 
         <nav className="flex w-full flex-wrap items-center gap-1 text-xs text-muted sm:w-auto sm:gap-2 sm:text-sm">
