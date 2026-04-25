@@ -32,9 +32,10 @@ This repository can be used in two ways:
 
 If you are new to the repo, start here:
 
-- `docs/project-brief.md` for the product direction
-- `docs/architecture.md` for the current repo audit and target structure
-- `docs/migration-plan.md` for the phased transformation plan
+- `docs/project-brief.md` for the project purpose and scope
+- `docs/architecture.md` for how the benchmark, artifact export, and web app fit together
+- `docs/migration-plan.md` for completed work, current limitations, and the future roadmap
+- `docs/README.md` for a guide to the documentation folder
 - `report/paper.md` and `report/paper.pdf` for the write-up
 - `scripts/run_paper_core.ps1` for the canonical paper-facing benchmark run
 - `scripts/export_frontend_artifacts.py` for the benchmark-to-app bridge
@@ -54,7 +55,7 @@ If you are new to the repo, start here:
 - `figures/` holds image outputs.
 - `artifacts/frontend/` holds precomputed JSON files for the web app.
 - `web/` holds the Next.js + TypeScript browser app.
-- `docs/` holds the product brief, architecture notes, methodology, migration plan, and next-step docs.
+- `docs/` holds project documentation: scope, methodology, architecture, roadmap, communication guidance, and next steps.
 - `report/` holds the paper and the paper artifact map.
 - `tests/` holds the automated integrity checks.
 - `notebooks/` holds supporting exploratory notebooks.

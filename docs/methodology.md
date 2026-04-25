@@ -1,4 +1,4 @@
-# Methodology Notes
+# Methodology
 
 ## Scope
 

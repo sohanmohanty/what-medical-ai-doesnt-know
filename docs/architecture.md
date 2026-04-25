@@ -1,158 +1,105 @@
-# Architecture Overview
+# Architecture
 
-## Current Repo Audit
+## Overview
 
-The current repository is already a strong research system. Its strongest qualities are:
+The project has two connected systems:
 
-- a **config-driven benchmark runner** in `src/experiments/run_configured_experiment.py`
-- structured experiment definitions in `configs/`
-- reproducible stored outputs in `results/`, `figures/`, and `report/`
-- automated checks in `tests/`
-- a canonical paper-facing path centered on `paper_core`
+- a Python benchmark that generates reproducible missing-data robustness results
+- a Next.js web app that reads those saved results and presents them through an interactive explorer
 
-In other words, the repo already contains a real engine. The current architecture preserves that engine and adds a readable interface on top.
+The benchmark remains the source of truth. The web app does not train models in the browser, collect user data, or make clinical predictions. It reads precomputed artifacts and explains how model behavior changes under controlled missingness.
 
-## What The Repo Currently Does
+## Research Engine
 
-Today the project:
+The research layer is responsible for data loading, missingness simulation, model training, evaluation, and saved artifacts.
 
-- loads public benchmark datasets
-- injects MCAR, MAR, and MNAR missingness
-- trains logistic regression, random forest, and gradient boosting models
-- compares multiple imputers
-- evaluates accuracy, ROC-AUC, Brier score, and ECE
-- stores metrics, predictions, manifests, masks, and figures
-- supports paper generation and reproducibility tracking
+Key directories:
 
-## Components To Preserve
+- `configs/`: YAML definitions for datasets, models, imputers, and experiment grids
+- `src/`: Python package for data loading, preprocessing, missingness, modeling, evaluation, plotting, and experiments
+- `scripts/`: reproducible entry points for common runs
+- `results/`: metrics, predictions, masks, manifests, and sample outputs
+- `figures/`: generated figures and reliability plots
+- `tests/`: integrity checks for the benchmark core
 
-These pieces should remain the analytical foundation:
-
-- `configs/`
-  - Keeps the benchmark configurable and reproducible.
-- `src/`
-  - Contains the actual experiment logic, missingness machinery, preprocessing, and evaluation code.
-- `scripts/run_paper_core.ps1`
-  - Remains the canonical paper-facing benchmark entry point.
-- `results/metrics/paper_core_summary.csv`
-  - Best seed artifact for the first frontend experience.
-- `results/manifests/*.json`
-  - Useful for provenance, display metadata, and future methodology pages.
-- `tests/`
-  - Important for keeping the research core reliable while the product layer evolves.
-
-## What Feels Too Research-Only
-
-These are valuable, but they are not enough on their own for a reader encountering the project for the first time:
-
-- CSV-heavy outputs without a frontend contract
-- figure and paper assets that require substantial context to understand
-- many focused historical scripts that are good for provenance but not for product integration
-- no stable explanation layer for nontechnical visitors
-- no interaction model for nontechnical visitors
-- no deterministic explanation system translating metrics into plain language
-
-## What The Interface Adds
-
-The interface layer is intentionally explanation-facing rather than model-facing:
-
-- a web frontend
-- a frontend-friendly artifact format
-- a deterministic explanation layer
-- a trust/stability mapping derived from stored benchmark metrics
-- content architecture for general vs technical audiences
-- navigation, disclaimers, and storytelling pages
-
-## Target Architecture
-
-The cleanest first version keeps the existing Python benchmark intact and adds a thin presentation layer on top.
-
-### Layer 1: Research Engine
-
-- `src/`
-- `configs/`
-- existing scripts and tests
-
-This layer continues to generate canonical experiment outputs.
-
-### Layer 2: Frontend Artifact Bridge
-
-- `scripts/export_frontend_artifacts.py`
-- `artifacts/frontend/`
-
-This layer reads saved benchmark summaries and emits a stable JSON contract for the web app. It is intentionally lightweight and uses precomputed artifacts instead of a live backend.
-
-### Layer 3: Web Explorer
-
-- `web/`
-
-This layer consumes the JSON artifact and focuses on:
-
-- explanation
-- interaction
-- trust visualization
-- methodology storytelling
-
-## Recommended Directory Structure
+The canonical paper-facing benchmark path is:
 
 ```text
-configs/                  Existing experiment definitions
-src/                      Existing benchmark engine
-scripts/                  Existing benchmark commands + artifact export
-results/                  Existing saved research outputs
-figures/                  Existing figures and run summaries
-artifacts/frontend/       Precomputed JSON files for the web app
-web/                      Next.js + TypeScript frontend
-docs/                     Product, architecture, methodology, and migration docs
+scripts/run_paper_core.ps1
+  -> src/experiments/run_configured_experiment.py
+  -> results/metrics/paper_core_summary.csv
+  -> results/predictions/paper_core_predictions.csv
+  -> results/manifests/paper_core_run_manifest.json
+```
+
+## Artifact Bridge
+
+The frontend should not parse arbitrary result folders directly. Instead, a small export script converts benchmark outputs into a stable JSON contract:
+
+```text
+scripts/export_frontend_artifacts.py
+  -> artifacts/frontend/paper_core_explorer.json
+```
+
+The exported artifact includes:
+
+- dataset, model, and missingness metadata
+- available missingness rates
+- per-scenario metrics
+- clean-vs-missing deltas
+- trust-score components
+- model-comparison slices
+- reliability data for calibration views
+
+This keeps the app simple, auditable, and easy to deploy.
+
+## Web App
+
+The web layer lives in `web/` and uses Next.js, TypeScript, and Tailwind CSS.
+
+Main pages:
+
+- `/`: overview and confidence-vs-trust framing
+- `/explorer`: interactive benchmark explorer
+- `/methodology`: datasets, models, metrics, missingness mechanisms, and limitations
+- `/about`: motivation and project framing
+
+The app reads:
+
+```text
+artifacts/frontend/paper_core_explorer.json
+```
+
+through:
+
+```text
+web/lib/load-explorer-data.ts
+```
+
+The deterministic explanation layer is implemented in:
+
+```text
+web/lib/explainer.ts
 ```
 
 ## Data Flow
 
 ```text
-Canonical benchmark run
-  -> results/metrics/paper_core_summary.csv
-  -> scripts/export_frontend_artifacts.py
-  -> artifacts/frontend/paper_core_explorer.json
-  -> web/app/explorer/page.tsx
-  -> interactive UI + deterministic explanation layer
+Public benchmark datasets
+  -> configured Python experiments
+  -> saved metrics and predictions
+  -> frontend JSON artifact
+  -> interactive explorer and explanation layer
 ```
 
-## Frontend Contract
+## Why There Is No Backend
 
-The JSON artifact exposes:
+A backend is unnecessary for the current version because:
 
-- dataset metadata and plain-English descriptions
-- model metadata and positioning notes
-- missingness mechanism descriptions
-- available missingness rates
-- per-scenario metric summaries
-- clean-vs-corrupt deltas
-- a derived stability/trust score
-
-This supports:
-
-- landing page context
-- a functional explorer shell
-- general and technical views
-- stress-test comparisons by rate
-
-## Why No Backend Yet
-
-A backend is unnecessary for the first version because:
-
-- the research outputs are already precomputed
-- the product is educational and analytical, not transactional
+- all benchmark results are precomputed
+- the project is educational and analytical, not transactional
+- no user medical data are collected
 - static artifacts are easier to audit and deploy
-- it avoids introducing privacy or health-risk concerns
+- the app can be hosted as a simple frontend
 
-API routes can be added later only if needed for:
-
-- dynamically filtered artifact loading
-- future scenario simulation
-- richer reliability-curve payloads
-
-## Current Architectural Direction
-
-The benchmark remains the engine.  
-The artifact export becomes the bridge.  
-The web app becomes the public identity.
+A backend should only be added later if the project needs dynamic scenario generation or richer artifact browsing that cannot be handled with static JSON.

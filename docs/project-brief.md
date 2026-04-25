@@ -29,13 +29,13 @@ High-stakes systems should be honest about uncertainty.
 
 Missing data do not just reduce performance. They can change how trustworthy a prediction feels, especially when a model still ranks cases reasonably well while its probabilities become less reliable.
 
-## Target Users
+## Intended Readers
 
 - General visitors who can understand a plain-English explanation in under a minute.
 - Technical readers who want to inspect metrics, calibration, methodology, and limitations.
 - Teachers, mentors, judges, and technical readers who need to quickly understand both the rigor and the motivation behind the work.
 
-## Product Goals
+## Design Goals
 
 - Make the work feel like a coherent research-and-interface project rather than a paper-only benchmark.
 - Preserve the rigor of the original research engine.
@@ -50,9 +50,9 @@ Missing data do not just reduce performance. They can change how trustworthy a p
 - **Grounded explanations:** Explanations should be deterministic, carefully written, and grounded in actual benchmark outputs.
 - **Research-backed visuals:** Every trust or stability indicator should map back to real stored metrics, not decorative intuition.
 
-## MVP Scope
+## Current Scope
 
-### Included
+### Included In The Current Version
 
 - A clear landing page with a plain-English value proposition and disclaimer
 - An interactive explorer with scenario, model, missingness mechanism, and missingness-rate controls

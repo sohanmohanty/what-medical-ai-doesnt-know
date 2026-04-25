@@ -1,120 +1,67 @@
-# Content Strategy
+# Communication Guide
+
+This document explains how the project describes benchmark results. It is meant to keep the website, README, and methodology pages consistent.
 
 ## Voice
 
-The site should sound:
+The writing should be clear, restrained, and technically honest. It should help nontechnical readers understand the main idea without weakening the research framing.
 
-- thoughtful
+Use language that is:
+
 - precise
 - calm
-- trustworthy
-- intellectually curious
+- evidence-based
+- understandable without advanced ML background
 
-It should not sound:
+Avoid language that is:
 
 - alarmist
-- melodramatic
-- overconfident
-- startup-salesy
-- faux-clinical
+- theatrical
+- startup-like
+- overly casual
+- falsely clinical
 
-## Audience Split
+## Main Distinction
 
-The product should intentionally support two reading modes.
+The project repeatedly separates two ideas:
 
-### General Mode
+- **Confidence:** the probability a model reports
+- **Trust:** whether that probability still holds up after checking calibration, robustness, and missingness
 
-Purpose:
+This distinction should stay central across the site.
 
-- explain the concept in plain English
-- help a visitor understand why missing data change trust
-- highlight caution without jargon overload
+## General View
 
-Primary questions this mode answers:
+The general view should answer:
 
 - What changed?
-- Why did the prediction become less trustworthy?
-- Does the model still seem stable?
-- Should the probability be treated cautiously?
+- Why might missing information matter here?
+- Is the model still relatively stable?
+- Should the probability be treated with caution?
 
-### Technical Mode
+The explanation should use plain English, but it should not oversimplify the result into "good" or "bad."
 
-Purpose:
+## Technical View
 
-- show real rigor
-- expose calibration-sensitive metrics
-- make the benchmark legible to technical readers
+The technical view should make the benchmark legible to readers who care about the metrics.
 
-Primary questions this mode answers:
+It should emphasize:
 
-- How much did ROC-AUC move?
-- How much did Brier score and ECE drift?
-- Which model is more stable under which mechanism?
-- Which results are benchmark-specific versus broadly suggestive?
+- ROC-AUC for ranking behavior
+- accuracy for label-level behavior
+- Brier score for probability quality
+- ECE for calibration error
+- reliability curves for probability alignment
+- model comparisons under the same dataset, mechanism, and rate
 
-## Page Messaging
-
-## Landing Page
-
-Primary job:
-
-- communicate the central question immediately
-
-Best framing:
-
-- "What happens when a model has to make a medical prediction without all the information it needs?"
-- "Not every confident prediction deserves trust."
-
-## Explorer
-
-Primary job:
-
-- show how missingness changes both performance and trust indicators
-
-Copy principle:
-
-- every selection state should produce a short deterministic explanation
-
-## Methodology
-
-Primary job:
-
-- reassure technical readers that the project is grounded in real benchmark design
-
-Copy principle:
-
-- use plain language first, then exact terms
-
-## About
-
-Primary job:
-
-- connect motivation to uncertainty and trustworthy systems
-
-Copy principle:
-
-- personal, restrained, and reflective
-
-## Explanation Template Rules
-
-- Start with what changed.
-- Follow with why the model likely shifted.
-- Distinguish ranking stability from probability trust.
-- End with a human-readable caution level.
-
-## Copy Guardrails
+## Guardrails
 
 - Never imply medical advice.
-- Never imply the app can evaluate a user's personal health.
-- Never anthropomorphize the model as if it "understands" the patient.
-- Prefer "the model appears more fragile under this setting" over dramatic claims.
+- Never imply the app can evaluate a visitor's personal health.
+- Never ask users to upload medical records.
+- Never present benchmark outputs as clinical recommendations.
+- Avoid saying a model is "good" in general. Prefer "more stable under this setting" or "less trustworthy under this missingness pattern."
 
-## Project Positioning
+## Short Project Description
 
-Short description:
-
-> I built an interactive platform that shows how clinical prediction models change when patient data are incomplete, focusing on calibration, uncertainty, and when a model should admit it does not know enough.
-
-Longer positioning:
-
-A reproducible clinical ML robustness benchmark sits behind an interface that explains how missing data affect both performance and trustworthiness in high-stakes prediction systems.
+I built an interactive benchmark explorer that shows how clinical prediction models change when patient data are incomplete, with emphasis on calibration, uncertainty, and when a model should communicate caution.

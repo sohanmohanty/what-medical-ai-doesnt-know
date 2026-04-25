@@ -1,117 +1,56 @@
-# Migration Plan
+# Development Roadmap
 
-## Goal
+This file records how the project moved from a research benchmark into an interactive benchmark explorer, and what remains to improve. It is not an external audit; it is a project roadmap.
 
-Transform the current repository from a research benchmark with saved artifacts into an interactive project about how medical AI behaves when information is missing.
+## Completed
 
-## Guiding Principle
+### Research Benchmark
 
-Do not replace the benchmark. Wrap it.
+- Config-driven experiment runner in `src/experiments/run_configured_experiment.py`
+- Public benchmark datasets for WDBC and Statlog Heart
+- MCAR, MAR, and MNAR missingness simulations
+- Logistic regression, random forest, and gradient boosting models
+- ROC-AUC, accuracy, Brier score, ECE, and reliability outputs
+- Canonical `paper_core` run artifacts
+- Automated tests for configuration, data handling, splitting, missingness, and evaluation
 
-The strongest technical move is to preserve the research core and add a presentation layer that makes the work easier to understand.
-
-## Phase 1: Audit And Product Definition
-
-### Objectives
-
-- inspect the existing repo
-- identify what should remain canonical
-- define the public explanation layer
-- document the architecture and migration path
-
-### Status
-
-- complete repo audit performed
-- canonical runner identified
-- reusable result tables identified
-- initial product docs added
-
-## Phase 2: Foundation
-
-### Objectives
-
-- create the initial `web/` application
-- establish design language and navigation
-- build landing, explorer shell, methodology, and about pages
-- wire the app to a real frontend artifact instead of static prose only
-
-### Status
-
-- complete for the first working version
-
-## Phase 3: Benchmark Integration
-
-### Objectives
-
-- formalize the benchmark-to-frontend export path
-- use canonical outputs as the default data source
-- add stability scoring and trust-state mapping
-- expose real benchmark comparisons in the explorer
-
-### Deliverables
+### Artifact Bridge
 
 - `scripts/export_frontend_artifacts.py`
 - `artifacts/frontend/paper_core_explorer.json`
-- frontend data loader and explorer state model
+- Scenario-level metrics for the frontend
+- Trust-score components derived from ranking retention, calibration, and missingness severity
+- Reliability data for the calibration view
 
-### Status
+### Web App
 
-- complete for scenario-level benchmark integration
-- reliability views and model comparison are powered by saved artifact data
+- Landing page with confidence-vs-trust framing
+- Explorer with dataset, model, mechanism, and missingness-rate controls
+- General and technical views
+- Plain-English deterministic explanations
+- Trust meter and model comparison cards
+- Methodology and About pages
+- Educational disclaimer and non-diagnostic framing
 
-## Phase 4: Technical Storytelling
+## Current Limitations
 
-### Objectives
+- Example input controls are illustrative; they do not yet represent feature-level counterfactual experiments.
+- Trust thresholds are implemented in code but should be documented more explicitly in the methodology.
+- The explorer uses scenario-level summaries rather than exposing every fold-level artifact.
+- The current deployment path has not yet been finalized.
 
-- add richer technical visualizations
-- integrate calibration and reliability artifacts
-- sharpen the methodology narrative
-- expand the explanation layer for general and technical audiences
+## Next Work
 
-### Next Artifacts To Export
+1. Add feature-level missingness summaries so example inputs can become honest feature-impact controls.
+2. Document the trust-score formula and thresholds in the methodology.
+3. Add a scenario comparison view for side-by-side model or mechanism comparisons.
+4. Test mobile layouts more thoroughly.
+5. Capture screenshots and prepare the first public deployment.
 
-- reliability bins for calibration plots
-- selected fold-level predictions for example case walkthroughs
-- feature-level missingness impact summaries
-- clean-vs-corrupt comparison groups for model cards
+## Design Constraints
 
-## Phase 5: Polish
-
-### Objectives
-
-- tighten copy across the site
-- improve accessibility and keyboard behavior
-- verify responsive layout
-- polish repo presentation and README
-- prepare deployment workflow
-
-## Recommended Sequencing
-
-1. Treat `paper_core` as the canonical product seed.
-2. Use summary metrics first, not raw predictions, for the first public explorer.
-3. Add fold-level reliability data only after the summary-driven explorer feels coherent.
-4. Add feature-toggle interactions only when exported artifacts support them honestly.
-
-## Risks To Avoid
-
-- turning the app into a fake medical tool
-- overbuilding a backend too early
-- creating decorative trust visuals that are not tied to actual metrics
-- burying the core message under too much ML jargon
-- letting the project feel like "just a paper with a nicer homepage"
-
-## Immediate Next Build Steps
-
-- add richer feature-level missingness summaries
-- document trust-score thresholds in the methodology
-- refine mobile layouts and capture clear screenshots
-- introduce feature-dropout interaction only after artifact support exists
-- deploy a preview build
-
-## Definition Of "MVP Complete"
-
-- the landing page clearly explains the project in under one minute
-- the explorer uses real benchmark-derived data
-- the technical mode exposes calibration-sensitive metrics
-- the methodology page explains the setup and limitations responsibly
-- the repo reads like a coherent research-and-interface project, not only a benchmark archive
+- Do not turn the project into a diagnostic tool.
+- Do not collect personal health data.
+- Do not add a chatbot or symptom checker.
+- Do not make clinical claims beyond the benchmark setting.
+- Keep the benchmark as the source of truth.

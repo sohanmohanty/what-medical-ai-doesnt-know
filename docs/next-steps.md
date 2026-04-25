@@ -1,5 +1,7 @@
 # Next Development Steps
 
+This file is a short implementation backlog for future improvements. It is not required context for understanding the current benchmark or web app.
+
 ## What To Build Next
 
 1. Add feature-level missingness summaries so the example inputs can become honest feature-impact controls.
