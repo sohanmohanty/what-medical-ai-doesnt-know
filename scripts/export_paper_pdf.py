@@ -53,6 +53,7 @@ def parse_markdown(text: str) -> list[Block]:
     paragraph: list[str] = []
     table_lines: list[str] = []
     in_code = False
+    in_references = False
     code_lines: list[str] = []
 
     def flush_paragraph() -> None:
@@ -114,13 +115,21 @@ def parse_markdown(text: str) -> list[Block]:
         if heading:
             flush_paragraph()
             flush_table()
+            heading_text = clean_inline(heading.group(2))
+            in_references = "references" in heading_text.lower()
             blocks.append(
                 Block(
                     "heading",
-                    clean_inline(heading.group(2)),
+                    heading_text,
                     level=len(heading.group(1)),
                 )
             )
+            continue
+
+        if in_references:
+            flush_paragraph()
+            flush_table()
+            blocks.append(Block("reference", clean_inline(line.removeprefix("- ").strip())))
             continue
 
         ordered = re.match(r"^(\d+)\.\s+(.*)$", line)
@@ -143,16 +152,23 @@ def parse_markdown(text: str) -> list[Block]:
     return blocks
 
 
-def wrap_text(text: str, font_size: float, width: float = CONTENT_W) -> list[str]:
+def wrap_text(
+    text: str,
+    font_size: float,
+    width: float = CONTENT_W,
+    *,
+    break_long_words: bool = False,
+) -> list[str]:
     # Use a conservative character-width estimate because PDF text is not clipped
     # to the logical column. This protects the right margin on long scientific lines.
     average_char_width = font_size * 0.56
     max_chars = max(28, int(width * 72 / average_char_width))
+    should_break = break_long_words or any(len(token) > max_chars for token in text.split())
     return textwrap.wrap(
         text,
         width=max_chars,
-        break_long_words=False,
-        break_on_hyphens=False,
+        break_long_words=should_break,
+        break_on_hyphens=should_break,
     ) or [""]
 
 
@@ -341,6 +357,16 @@ class PaperRenderer:
             )
         self.y -= len(lines) * line_h + 0.07
 
+    def render_reference(self, text: str) -> None:
+        indent = 0.26
+        lines = wrap_text(text, 9.3, width=CONTENT_W - indent, break_long_words=True)
+        line_h = 9.3 / 72 * 1.38
+        self.ensure_space(len(lines) * line_h + 0.18)
+        for i, line in enumerate(lines):
+            x = LEFT if i == 0 else LEFT + indent
+            self.text(x, self.y - i * line_h, line, size=9.3, family=SERIF, color=INK)
+        self.y -= len(lines) * line_h + 0.16
+
     def render_code(self, code: str) -> None:
         lines = code.splitlines() or [""]
         line_h = 8.7 / 72 * 1.35
@@ -447,6 +473,8 @@ def render_pdf(blocks: list[Block]) -> None:
                 renderer.render_paragraph(block.text)
             elif block.kind in {"bullet", "ordered"}:
                 renderer.render_list_item(block)
+            elif block.kind == "reference":
+                renderer.render_reference(block.text)
             elif block.kind == "code":
                 renderer.render_code(block.text)
             elif block.kind == "figure":
