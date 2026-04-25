@@ -239,8 +239,9 @@ export default async function HomePage() {
             Built for clarity, grounded in evidence
           </h2>
           <p className="mt-4 text-base leading-8 text-muted">
-            The charts are backed by saved benchmark outputs, not made-up demo numbers. The goal is
-            to make missing-data behavior understandable without flattening the statistical story.
+            The charts are backed by saved benchmark outputs, not decorative placeholder values.
+            The goal is to make missing-data behavior understandable without flattening the
+            statistical story.
           </p>
         </article>
       </section>

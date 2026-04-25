@@ -43,7 +43,7 @@ These pieces should remain the analytical foundation:
 
 ## What Feels Too Research-Only
 
-These are valuable, but they are not enough on their own for someone opening the project cold:
+These are valuable, but they are not enough on their own for a reader encountering the project for the first time:
 
 - CSV-heavy outputs without a frontend contract
 - figure and paper assets that require substantial context to understand

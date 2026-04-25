@@ -21,7 +21,7 @@ The work sits at the intersection of:
 - statistics
 - uncertainty and decision-making
 
-The benchmark already shows the technical work. The interface adds the missing layer: an explanation of why the results matter to people who do not spend their day reading metric tables.
+The benchmark already shows the technical work. The interface adds the missing layer: an explanation of why the results matter to readers who are not already immersed in the metric tables.
 
 ## Core Message
 
@@ -47,7 +47,7 @@ Missing data do not just reduce performance. They can change how trustworthy a p
 - **Plain-English first:** The default experience should explain what changed and why it matters without jargon.
 - **Technical depth on demand:** Technical readers should be able to inspect metrics, methodology, and robustness details without cluttering the first impression.
 - **Honest, not theatrical:** The project should feel thoughtful and serious, not melodramatic or hackathon-flashy.
-- **No fake AI gloss:** Explanations should be deterministic, carefully written, and grounded in actual benchmark outputs.
+- **Grounded explanations:** Explanations should be deterministic, carefully written, and grounded in actual benchmark outputs.
 - **Research-backed visuals:** Every trust or stability indicator should map back to real stored metrics, not decorative intuition.
 
 ## MVP Scope

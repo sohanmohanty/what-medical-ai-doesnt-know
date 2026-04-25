@@ -5,7 +5,7 @@ This repository has two connected parts:
 - a **config-driven research benchmark** for studying how clinical machine learning models behave when inputs are partially missing
 - an **interactive web app** that turns those results into a readable explorer of calibration, uncertainty, and trust
 
-The benchmark produces the evidence. The web app helps people understand what the evidence means.
+The benchmark produces the evidence. The web app provides a structured way to interpret it.
 
 ## What This Repo Does
 

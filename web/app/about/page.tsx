@@ -44,9 +44,9 @@ export default function AboutPage() {
             person should place in its output.
           </p>
           <p className="mt-5 text-base leading-8 text-muted">
-            Controlled benchmark experiments make that hidden shift visible. The point is simple:
-            a prediction system should show uncertainty when the evidence behind its output gets
-            thinner.
+            Controlled benchmark experiments make that hidden shift visible. The central point is
+            that a prediction system should show uncertainty when the evidence behind its output
+            gets thinner.
           </p>
         </article>
       </section>
