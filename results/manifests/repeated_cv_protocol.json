@@ -1,0 +1,10 @@
+{
+  "protocol": "repeated_stratified_k_fold",
+  "outer_folds": 5,
+  "repeats": 5,
+  "stratified": true,
+  "hyperparameter_tuning": true,
+  "inner_folds": 3,
+  "tuning_metric": "roc_auc",
+  "tuning_n_jobs": 1
+}

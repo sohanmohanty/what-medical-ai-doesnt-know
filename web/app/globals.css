@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: 195 38% 12%;
+  --muted: 198 16% 36%;
+  --line: 194 22% 83%;
+  --panel: 0 0% 100%;
+  --panel-alt: 185 39% 92%;
+  --accent: 186 58% 34%;
+  --accent-soft: 184 43% 90%;
+  --caution: 40 96% 63%;
+  --danger: 8 73% 56%;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  min-height: 100vh;
+  color: hsl(var(--ink));
+  background:
+    radial-gradient(circle at top left, rgba(72, 163, 168, 0.18), transparent 33%),
+    radial-gradient(circle at 85% 12%, rgba(241, 182, 73, 0.18), transparent 26%),
+    linear-gradient(180deg, #fbfaf6 0%, #f5f3ee 55%, #f8faf8 100%);
+  font-family: var(--font-sans), sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(18, 75, 84, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 75, 84, 0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(circle at center, black 45%, transparent 100%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display), serif;
+  letter-spacing: -0.04em;
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-10;
+  }
+
+  .surface-panel {
+    @apply rounded-[2rem] border border-line/80 bg-white/85 shadow-soft backdrop-blur;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center rounded-full border border-line bg-white/90 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-muted;
+  }
+
+  .hero-stat {
+    @apply rounded-[1.5rem] border border-line/80 bg-white/90 p-5 shadow-[0_20px_40px_-36px_rgba(18,54,63,0.9)];
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-line bg-white/90 px-5 py-3 text-sm font-semibold text-ink transition hover:border-accent/40 hover:text-accent;
+  }
+}

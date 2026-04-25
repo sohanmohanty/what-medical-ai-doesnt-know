@@ -1,0 +1,161 @@
+{
+  "dataset": "statlog_heart",
+  "protocol": "repeated_stratified_k_fold",
+  "outer_folds": 5,
+  "repeats": 5,
+  "inner_folds": 3,
+  "hyperparameter_tuning": true,
+  "tuning_metric": "roc_auc",
+  "splits": [
+    {
+      "repeat": 0,
+      "fold": 0,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 0,
+      "fold": 1,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 0,
+      "fold": 2,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 0,
+      "fold": 3,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 0,
+      "fold": 4,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 1,
+      "fold": 0,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 1,
+      "fold": 1,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 1,
+      "fold": 2,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 1,
+      "fold": 3,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 1,
+      "fold": 4,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 2,
+      "fold": 0,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 2,
+      "fold": 1,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 2,
+      "fold": 2,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 2,
+      "fold": 3,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 2,
+      "fold": 4,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 3,
+      "fold": 0,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 3,
+      "fold": 1,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 3,
+      "fold": 2,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 3,
+      "fold": 3,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 3,
+      "fold": 4,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 4,
+      "fold": 0,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 4,
+      "fold": 1,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 4,
+      "fold": 2,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 4,
+      "fold": 3,
+      "train_size": 216,
+      "test_size": 54
+    },
+    {
+      "repeat": 4,
+      "fold": 4,
+      "train_size": 216,
+      "test_size": 54
+    }
+  ]
+}

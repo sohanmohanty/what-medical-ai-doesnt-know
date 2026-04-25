@@ -1,0 +1,114 @@
+{
+  "run_name": "smoke_test",
+  "generated_at_utc": "2026-04-11T17:13:03.137617+00:00",
+  "experiment": {
+    "name": "core_missingness_grid",
+    "datasets": [
+      "wdbc",
+      "statlog_heart"
+    ],
+    "models": [
+      "logistic_regression",
+      "random_forest",
+      "gradient_boosting"
+    ],
+    "imputers": [
+      "simple",
+      "simple_plus_indicators",
+      "knn",
+      "iterative"
+    ],
+    "cv": {
+      "protocol": "repeated_stratified_k_fold",
+      "outer_folds": 5,
+      "repeats": 5,
+      "stratified": true,
+      "hyperparameter_tuning": true,
+      "inner_folds": 3,
+      "tuning_metric": "roc_auc",
+      "tuning_n_jobs": 1
+    },
+    "missingness": {
+      "mechanisms": [
+        "mcar",
+        "mar",
+        "mnar"
+      ],
+      "rates": [
+        0.1,
+        0.2,
+        0.3,
+        0.5
+      ],
+      "random_seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "train_test_regimes": [
+      "clean_train_corrupt_test",
+      "corrupt_train_corrupt_test"
+    ],
+    "evaluation": {
+      "metrics": [
+        "accuracy",
+        "roc_auc",
+        "brier",
+        "ece"
+      ],
+      "save_probabilities": true,
+      "save_masks": true,
+      "calibration_bins": 10
+    },
+    "outputs": {
+      "metrics_path": "results/metrics/core_missingness_grid_metrics.csv",
+      "summary_path": "results/metrics/core_missingness_grid_summary.csv",
+      "predictions_path": "results/predictions/core_missingness_grid_predictions.csv",
+      "manifest_path": "results/manifests/core_missingness_grid_run_manifest.json",
+      "masks_dir": "results/masks/core_missingness_grid",
+      "figures_dir": "figures/runs/core_missingness_grid"
+    }
+  },
+  "selected": {
+    "datasets": [
+      "wdbc"
+    ],
+    "models": [
+      "logistic_regression"
+    ],
+    "imputers": [
+      "simple"
+    ],
+    "mechanisms": [
+      "mcar"
+    ],
+    "rates": [
+      0.1
+    ],
+    "train_test_regimes": [
+      "clean_train_corrupt_test"
+    ],
+    "random_seeds": [
+      0
+    ],
+    "executed_outer_splits": 1
+  },
+  "outputs": {
+    "metrics_path": "results\\samples\\smoke_test\\metrics.csv",
+    "summary_path": "results\\samples\\smoke_test\\summary.csv",
+    "predictions_path": "results\\samples\\smoke_test\\predictions.csv",
+    "manifest_path": "results\\samples\\smoke_test\\run_manifest.json",
+    "masks_dir": "results\\samples\\smoke_test\\masks",
+    "figures_dir": "figures\\samples\\smoke_test"
+  },
+  "row_counts": {
+    "metrics_rows": 1,
+    "prediction_rows": 114
+  },
+  "figure_paths": [
+    "figures\\samples\\smoke_test\\wdbc__logistic_regression__simple__clean_train_corrupt_test__summary.png"
+  ]
+}

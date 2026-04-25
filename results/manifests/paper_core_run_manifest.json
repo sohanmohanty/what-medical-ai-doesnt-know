@@ -1,0 +1,119 @@
+{
+  "run_name": "paper_core",
+  "generated_at_utc": "2026-04-11T16:44:05.268514+00:00",
+  "experiment": {
+    "name": "paper_core",
+    "datasets": [
+      "wdbc",
+      "statlog_heart"
+    ],
+    "models": [
+      "logistic_regression",
+      "random_forest",
+      "gradient_boosting"
+    ],
+    "imputers": [
+      "simple"
+    ],
+    "cv": {
+      "protocol": "repeated_stratified_k_fold",
+      "outer_folds": 5,
+      "repeats": 2,
+      "stratified": true,
+      "hyperparameter_tuning": true,
+      "inner_folds": 3,
+      "tuning_metric": "roc_auc",
+      "tuning_n_jobs": 1
+    },
+    "missingness": {
+      "mechanisms": [
+        "mcar",
+        "mar",
+        "mnar"
+      ],
+      "rates": [
+        0.1,
+        0.2,
+        0.3,
+        0.5
+      ],
+      "random_seeds": [
+        0
+      ]
+    },
+    "train_test_regimes": [
+      "clean_train_corrupt_test"
+    ],
+    "evaluation": {
+      "metrics": [
+        "accuracy",
+        "roc_auc",
+        "brier",
+        "ece"
+      ],
+      "save_probabilities": true,
+      "save_masks": true,
+      "calibration_bins": 10
+    },
+    "outputs": {
+      "metrics_path": "results/metrics/paper_core_metrics.csv",
+      "summary_path": "results/metrics/paper_core_summary.csv",
+      "predictions_path": "results/predictions/paper_core_predictions.csv",
+      "manifest_path": "results/manifests/paper_core_run_manifest.json",
+      "masks_dir": "results/masks/paper_core",
+      "figures_dir": "figures/runs/paper_core"
+    }
+  },
+  "selected": {
+    "datasets": [
+      "wdbc",
+      "statlog_heart"
+    ],
+    "models": [
+      "logistic_regression",
+      "random_forest",
+      "gradient_boosting"
+    ],
+    "imputers": [
+      "simple"
+    ],
+    "mechanisms": [
+      "mcar",
+      "mar",
+      "mnar"
+    ],
+    "rates": [
+      0.1,
+      0.2,
+      0.3,
+      0.5
+    ],
+    "train_test_regimes": [
+      "clean_train_corrupt_test"
+    ],
+    "random_seeds": [
+      0
+    ],
+    "executed_outer_splits": 20
+  },
+  "outputs": {
+    "metrics_path": "results/metrics/paper_core_metrics.csv",
+    "summary_path": "results/metrics/paper_core_summary.csv",
+    "predictions_path": "results/predictions/paper_core_predictions.csv",
+    "manifest_path": "results/manifests/paper_core_run_manifest.json",
+    "masks_dir": "results/masks/paper_core",
+    "figures_dir": "figures/runs/paper_core"
+  },
+  "row_counts": {
+    "metrics_rows": 720,
+    "prediction_rows": 60408
+  },
+  "figure_paths": [
+    "figures\\runs\\paper_core\\statlog_heart__gradient_boosting__simple__clean_train_corrupt_test__summary.png",
+    "figures\\runs\\paper_core\\statlog_heart__logistic_regression__simple__clean_train_corrupt_test__summary.png",
+    "figures\\runs\\paper_core\\statlog_heart__random_forest__simple__clean_train_corrupt_test__summary.png",
+    "figures\\runs\\paper_core\\wdbc__gradient_boosting__simple__clean_train_corrupt_test__summary.png",
+    "figures\\runs\\paper_core\\wdbc__logistic_regression__simple__clean_train_corrupt_test__summary.png",
+    "figures\\runs\\paper_core\\wdbc__random_forest__simple__clean_train_corrupt_test__summary.png"
+  ]
+}

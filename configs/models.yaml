@@ -1,0 +1,42 @@
+models:
+  logistic_regression:
+    family: sklearn
+    class_name: LogisticRegression
+    use_scaling: true
+    default_params:
+      C: 1.0
+      solver: liblinear
+      max_iter: 1000
+    param_grid:
+      C: [0.01, 0.1, 1.0, 10.0]
+      solver: [liblinear]
+
+  random_forest:
+    family: sklearn
+    class_name: RandomForestClassifier
+    use_scaling: false
+    default_params:
+      n_estimators: 200
+      max_depth: null
+      min_samples_leaf: 1
+      max_features: sqrt
+      random_state: 42
+    param_grid:
+      n_estimators: [200, 500]
+      max_depth: [null, 4, 8]
+      min_samples_leaf: [1, 3, 5]
+      max_features: [sqrt, log2]
+
+  gradient_boosting:
+    family: sklearn
+    class_name: HistGradientBoostingClassifier
+    use_scaling: false
+    default_params:
+      learning_rate: 0.05
+      max_depth: null
+      max_iter: 200
+      random_state: 42
+    param_grid:
+      learning_rate: [0.03, 0.05, 0.1]
+      max_depth: [null, 3, 5]
+      max_iter: [100, 200]

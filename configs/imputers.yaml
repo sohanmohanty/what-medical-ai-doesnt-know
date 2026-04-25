@@ -1,0 +1,40 @@
+imputers:
+  simple:
+    method: simple
+    default_params:
+      strategy_numeric: median
+      strategy_binary: most_frequent
+      strategy_categorical: most_frequent
+      add_missing_indicators: false
+    param_grid: {}
+
+  simple_plus_indicators:
+    method: simple
+    default_params:
+      strategy_numeric: median
+      strategy_binary: most_frequent
+      strategy_categorical: most_frequent
+      add_missing_indicators: true
+    param_grid: {}
+
+  knn:
+    method: knn
+    default_params:
+      n_neighbors: 5
+      weights: uniform
+      strategy_binary: most_frequent
+      strategy_categorical: most_frequent
+      add_missing_indicators: false
+    param_grid:
+      n_neighbors: [3, 5, 7]
+      weights: [uniform]
+
+  iterative:
+    method: iterative
+    default_params:
+      max_iter: 10
+      random_state: 42
+      strategy_binary: most_frequent
+      strategy_categorical: most_frequent
+      add_missing_indicators: false
+    param_grid: {}

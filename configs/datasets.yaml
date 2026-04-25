@@ -1,0 +1,103 @@
+datasets:
+  wdbc:
+    loader_name: load_wdbc
+    task_type: binary_classification
+    target_column: target
+    id_columns: []
+    raw_path: data/raw/wdbc.csv
+    schema_output: data/metadata/wdbc_schema.json
+    feature_types:
+      numeric_columns:
+        - mean radius
+        - mean texture
+        - mean perimeter
+        - mean area
+        - mean smoothness
+        - mean compactness
+        - mean concavity
+        - mean concave points
+        - mean symmetry
+        - mean fractal dimension
+        - radius error
+        - texture error
+        - perimeter error
+        - area error
+        - smoothness error
+        - compactness error
+        - concavity error
+        - concave points error
+        - symmetry error
+        - fractal dimension error
+        - worst radius
+        - worst texture
+        - worst perimeter
+        - worst area
+        - worst smoothness
+        - worst compactness
+        - worst concavity
+        - worst concave points
+        - worst symmetry
+        - worst fractal dimension
+      binary_columns: []
+      categorical_columns: []
+    missingness_profiles:
+      mcar:
+        feature_subset: all
+      mar:
+        target_features:
+          - mean texture
+          - mean perimeter
+          - mean area
+          - worst texture
+          - worst perimeter
+        anchor_feature: mean radius
+        beta: 2.0
+      mnar:
+        target_features:
+          - mean texture
+          - mean perimeter
+          - mean area
+          - worst texture
+          - worst perimeter
+        beta: 2.0
+
+  statlog_heart:
+    loader_name: load_statlog_heart
+    task_type: binary_classification
+    target_column: target
+    id_columns: []
+    raw_path: data/raw/statlog_heart_cached.csv
+    schema_output: data/metadata/statlog_schema.json
+    feature_types:
+      numeric_columns:
+        - age
+        - resting_blood_pressure
+        - serum_cholestoral
+        - maximum_heart_rate_achieved
+        - oldpeak
+        - number_of_major_vessels
+      binary_columns:
+        - sex
+        - fasting_blood_sugar
+        - exercise_induced_angina
+      categorical_columns:
+        - chest
+        - resting_electrocardiographic_results
+        - slope
+        - thal
+    missingness_profiles:
+      mcar:
+        feature_subset: all
+      mar:
+        target_features:
+          - resting_blood_pressure
+          - serum_cholestoral
+          - maximum_heart_rate_achieved
+        anchor_feature: age
+        beta: 2.0
+      mnar:
+        target_features:
+          - resting_blood_pressure
+          - serum_cholestoral
+          - maximum_heart_rate_achieved
+        beta: 2.0

@@ -1,0 +1,15 @@
+name: robust-missing-clinical-ml
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - numpy
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - pyyaml
+  - pyarrow
+  - pytest
+  - pip:
+      - ucimlrepo
