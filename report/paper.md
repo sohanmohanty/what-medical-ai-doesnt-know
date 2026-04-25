@@ -87,6 +87,19 @@ We first established clean-data baselines on WDBC and Statlog Heart before intro
 
 These baselines serve as the reference point for later degradation analyses and already suggest that WDBC is more forgiving than Statlog Heart.
 
+Table 1. Clean-data baseline performance before introducing missingness.
+
+| Dataset | Model | Accuracy | ROC-AUC | Brier |
+|---|---|---:|---:|---:|
+| Statlog Heart | Gradient boosting | 80.0% | 86.5% | 0.151 |
+| Statlog Heart | Logistic regression | 85.2% | 90.0% | 0.122 |
+| Statlog Heart | Random forest | 82.2% | 88.8% | 0.132 |
+| WDBC | Gradient boosting | 95.8% | 99.1% | 0.029 |
+| WDBC | Logistic regression | 97.5% | 99.5% | 0.020 |
+| WDBC | Random forest | 95.4% | 99.0% | 0.034 |
+
+![Figure 1. Clean-data ROC-AUC baselines for the two benchmark datasets. WDBC begins from a much stronger and more separable baseline than Statlog Heart, which is important for interpreting later robustness differences.](figures/paper/clean_baseline_auc.png)
+
 ### 3.2 Missingness mechanism validation
 
 We implemented MCAR, MAR, and MNAR masking procedures and verified that achieved missingness rates tracked the requested rates of 10%, 20%, 30%, and 50% closely. This indicates that the masking procedures behaved as intended and that the downstream robustness results reflect controlled missingness rather than accidental corruption.
@@ -96,6 +109,8 @@ We implemented MCAR, MAR, and MNAR masking procedures and verified that achieved
 On WDBC, logistic regression under simple imputation showed measurable degradation under missingness, especially in Brier score and ECE. Among the three mechanisms, MCAR was clearly the harshest. As MCAR increased, Brier score and ECE worsened more clearly than ROC-AUC, suggesting that probability quality was more sensitive than ranking performance. MAR and MNAR were milder across most rates, although both still produced visible degradation at higher missingness rates.
 
 Overall, logistic regression remained fairly strong on WDBC under moderate missingness, but its predicted probabilities became less reliable as missingness increased.
+
+![Figure 2. WDBC logistic regression Brier score under MCAR, MAR, and MNAR. The probability-quality metric worsens most visibly under MCAR, even though discrimination remains comparatively strong.](figures/paper/wdbc_logreg_mechanism_compare_brier.png)
 
 ### 3.4 WDBC: model comparison across mechanisms
 
@@ -113,6 +128,8 @@ In the canonical core run, MCAR was clearly the harshest mechanism on Statlog. A
 
 This indicates that Statlog is a more fragile dataset under missingness.
 
+![Figure 3. Statlog Heart logistic regression ROC-AUC under MCAR, MAR, and MNAR. The sharper MCAR decline shows that the smaller and noisier dataset is more sensitive to information loss.](figures/paper/statlog_logreg_mechanism_compare_auc.png)
+
 ### 3.6 Statlog Heart: model comparison across mechanisms
 
 We compared logistic regression, random forest, and gradient boosting on Statlog under MCAR, MAR, and MNAR.
@@ -126,6 +143,8 @@ This shows that the dataset effect and model effect both matter. Harder datasets
 Comparing the two datasets, WDBC remained much stronger in absolute performance and showed smaller losses in accuracy and ROC-AUC across the canonical core benchmark. The contrast was especially clear under MCAR, where Statlog showed much stronger discrimination loss and worse Brier deterioration.
 
 The core benchmark also showed, however, that WDBC did not dominate every calibration-sensitive change. ECE drift under MCAR remained substantial on WDBC, especially for the tree-based models. The comparison therefore suggests that dataset characteristics matter greatly when evaluating robustness to missing data: WDBC is the easier and more resilient benchmark overall, but strong discrimination on WDBC does not guarantee calibration stability.
+
+![Figure 4. Cross-dataset logistic regression comparison under MCAR. Statlog Heart loses substantially more ROC-AUC as missingness increases, while WDBC remains comparatively stable in discrimination terms.](figures/paper/logreg_mcar_wdbc_vs_statlog_auc.png)
 
 ### 3.8 Imputer comparison
 
@@ -142,6 +161,10 @@ On WDBC, calibration was relatively stable under missingness. Although ECE and B
 Statlog Heart showed a less stable calibration pattern. Under MCAR, ECE and Brier score deteriorated more clearly, especially at higher missingness rates. MAR and MNAR were milder than MCAR in the present constructions, but calibration drift was still more visible and more variable than on WDBC.
 
 An important pattern across both datasets is that calibration can worsen even when ROC-AUC remains comparatively strong. In other words, the model may continue to rank cases reasonably well while producing probabilities that are less trustworthy. This is especially important in clinical machine learning, where predicted probabilities may be used directly for risk estimation, triage, or threshold-based decision support.
+
+![Figure 5. Expected calibration error for logistic regression with iterative imputation across WDBC and Statlog Heart. The figure highlights that probability reliability can drift differently from ranking performance.](figures/paper/logreg_iterative_wdbc_vs_statlog_ece.png)
+
+![Figure 6. Statlog Heart reliability diagram under 30% MCAR. The gap between predicted probability and observed outcome frequency provides a direct visual check on calibration rather than only aggregate accuracy.](figures/paper/statlog_reliability_mcar_0.3.png)
 
 ### 3.10 Training-regime comparison
 
@@ -171,6 +194,13 @@ Taken together, the experiments support five main conclusions:
 3. **Imputation strategy matters:** iterative imputation was often the strongest of the focused imputer comparisons.
 4. **Mechanism design matters:** in the present constructions, MCAR is typically the most disruptive mechanism, while MAR and MNAR are milder.
 5. **Calibration matters:** degradation in probability reliability can appear even when ROC-AUC remains comparatively strong.
+
+Table 2. Severe MCAR stress test summary at 50% missingness in the canonical core benchmark.
+
+| Dataset | Most fragile model at 50% MCAR | ROC-AUC | ROC-AUC change | Brier change | ECE |
+|---|---|---:|---:|---:|---:|
+| Statlog Heart | Gradient boosting | 79.2% | -0.096 | +0.064 | 0.158 |
+| WDBC | Gradient boosting | 95.9% | -0.033 | +0.098 | 0.145 |
 
 ## 4. Discussion
 
@@ -216,24 +246,19 @@ A companion web explorer presents the same benchmark results through a static fr
 
 ## 7. Supplementary Figures
 
-### Main Figures
+Several primary figures are embedded in the results section. The remaining figures below are retained as supplementary artifacts for readers who want to inspect the broader experimental grid.
+
+### Additional mechanism and model comparison figures
 - `figures/paper/clean_baseline_brier.png`
-- `figures/paper/clean_baseline_auc.png`
-- `figures/paper/wdbc_logreg_mechanism_compare_brier.png`
-- `figures/paper/wdbc_logreg_mechanism_compare_auc.png`
-- `figures/paper/statlog_logreg_mechanism_compare_brier.png`
-- `figures/paper/statlog_logreg_mechanism_compare_auc.png`
 - `figures/paper/logreg_mcar_wdbc_vs_statlog_brier.png`
-- `figures/paper/logreg_mcar_wdbc_vs_statlog_auc.png`
 - `figures/paper/wdbc_mcar_model_compare_brier.png`
 - `figures/paper/wdbc_mcar_model_compare_auc.png`
 - `figures/paper/statlog_mcar_model_compare_brier.png`
 - `figures/paper/statlog_mcar_model_compare_auc.png`
 - `figures/paper/wdbc_logreg_iterative_ece_compare.png`
 - `figures/paper/statlog_logreg_iterative_ece_compare.png`
-- `figures/paper/logreg_iterative_wdbc_vs_statlog_ece.png`
 
-### Supporting Figures
+### Reliability and follow-up figures
 - `figures/paper/wdbc_reliability_clean.png`
 - `figures/paper/wdbc_reliability_mcar_0.3.png`
 - `figures/paper/wdbc_reliability_mar_0.3.png`

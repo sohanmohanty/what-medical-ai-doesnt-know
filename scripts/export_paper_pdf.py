@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 import re
 import textwrap
@@ -38,6 +38,7 @@ class Block:
     text: str
     level: int = 0
     label: str = ""
+    cells: list[list[str]] = field(default_factory=list)
 
 
 def clean_inline(text: str) -> str:
@@ -50,6 +51,7 @@ def clean_inline(text: str) -> str:
 def parse_markdown(text: str) -> list[Block]:
     blocks: list[Block] = []
     paragraph: list[str] = []
+    table_lines: list[str] = []
     in_code = False
     code_lines: list[str] = []
 
@@ -58,6 +60,20 @@ def parse_markdown(text: str) -> list[Block]:
         if paragraph:
             blocks.append(Block("paragraph", clean_inline(" ".join(paragraph))))
             paragraph = []
+
+    def flush_table() -> None:
+        nonlocal table_lines
+        if not table_lines:
+            return
+        rows = []
+        for row in table_lines:
+            cells = [clean_inline(cell.strip()) for cell in row.strip().strip("|").split("|")]
+            if cells and all(re.fullmatch(r":?-{3,}:?", cell) for cell in cells):
+                continue
+            rows.append(cells)
+        if rows:
+            blocks.append(Block("table", "", cells=rows))
+        table_lines = []
 
     for raw_line in text.replace("\r\n", "\n").splitlines():
         line = raw_line.rstrip()
@@ -69,6 +85,7 @@ def parse_markdown(text: str) -> list[Block]:
                 in_code = False
             else:
                 flush_paragraph()
+                flush_table()
                 in_code = True
             continue
 
@@ -78,11 +95,25 @@ def parse_markdown(text: str) -> list[Block]:
 
         if not line.strip():
             flush_paragraph()
+            flush_table()
+            continue
+
+        image = re.match(r"^!\[(.*?)\]\((.*?)\)$", line.strip())
+        if image:
+            flush_paragraph()
+            flush_table()
+            blocks.append(Block("figure", clean_inline(image.group(1)), label=image.group(2).strip()))
+            continue
+
+        if line.strip().startswith("|") and line.strip().endswith("|"):
+            flush_paragraph()
+            table_lines.append(line.strip())
             continue
 
         heading = re.match(r"^(#{1,6})\s+(.*)$", line)
         if heading:
             flush_paragraph()
+            flush_table()
             blocks.append(
                 Block(
                     "heading",
@@ -95,17 +126,20 @@ def parse_markdown(text: str) -> list[Block]:
         ordered = re.match(r"^(\d+)\.\s+(.*)$", line)
         if ordered:
             flush_paragraph()
+            flush_table()
             blocks.append(Block("ordered", clean_inline(ordered.group(2)), label=ordered.group(1)))
             continue
 
         if line.startswith("- "):
             flush_paragraph()
+            flush_table()
             blocks.append(Block("bullet", clean_inline(line[2:])))
             continue
 
         paragraph.append(line.strip())
 
     flush_paragraph()
+    flush_table()
     return blocks
 
 
@@ -319,6 +353,72 @@ class PaperRenderer:
             code_y -= line_h
         self.y -= box_h + 0.18
 
+    def render_figure(self, block: Block) -> None:
+        path = ROOT / block.label
+        caption_lines = wrap_text(block.text, 8.3, width=CONTENT_W)
+        caption_h = len(caption_lines) * (8.3 / 72 * 1.35) + 0.18
+        if not path.exists():
+            self.render_paragraph(f"[Missing figure: {block.label}] {block.text}")
+            return
+
+        image = plt.imread(path)
+        image_h, image_w = image.shape[:2]
+        aspect = image_h / image_w
+        max_w = CONTENT_W
+        max_h = 4.25
+        draw_w = min(max_w, max_h / aspect)
+        draw_h = draw_w * aspect
+        self.ensure_space(draw_h + caption_h + 0.42)
+        x = LEFT + (CONTENT_W - draw_w) / 2
+        y_bottom = self.y - draw_h
+        ax = self.fig.add_axes([x / PAGE_W, y_bottom / PAGE_H, draw_w / PAGE_W, draw_h / PAGE_H])
+        ax.imshow(image)
+        ax.set_axis_off()
+        self.y = y_bottom - 0.12
+        for line in caption_lines:
+            self.text(LEFT, self.y, line, size=8.3, family=SERIF, style="italic", color=MUTED)
+            self.y -= 8.3 / 72 * 1.35
+        self.y -= 0.22
+
+    def render_table(self, block: Block) -> None:
+        if not block.cells:
+            return
+        headers = block.cells[0]
+        rows = block.cells[1:]
+        n_cols = len(headers)
+        col_w = CONTENT_W / max(1, n_cols)
+        font_size = 7.0 if n_cols >= 6 else 7.8
+        line_h = font_size / 72 * 1.30
+        row_heights = []
+        wrapped_rows = []
+        for row in [headers] + rows:
+            wrapped = [wrap_text(cell, font_size, width=col_w - 0.08) for cell in row]
+            wrapped_rows.append(wrapped)
+            row_heights.append(max(len(cell_lines) for cell_lines in wrapped) * line_h + 0.12)
+        table_h = sum(row_heights) + 0.16
+        self.ensure_space(table_h + 0.20)
+        y_top = self.y
+        self.line(LEFT, y_top, PAGE_W - RIGHT, y_top, INK, 0.55)
+        y = y_top - 0.10
+        for r_i, wrapped in enumerate(wrapped_rows):
+            if r_i == 1:
+                self.line(LEFT, y + 0.04, PAGE_W - RIGHT, y + 0.04, RULE, 0.55)
+            for c_i, cell_lines in enumerate(wrapped):
+                x = LEFT + c_i * col_w
+                for l_i, line in enumerate(cell_lines):
+                    self.text(
+                        x,
+                        y - l_i * line_h,
+                        line,
+                        size=font_size,
+                        family=SANS,
+                        weight="bold" if r_i == 0 else "normal",
+                        color=INK if r_i == 0 else MUTED,
+                    )
+            y -= row_heights[r_i]
+        self.line(LEFT, y + 0.02, PAGE_W - RIGHT, y + 0.02, INK, 0.55)
+        self.y = y - 0.18
+
 
 def render_pdf(blocks: list[Block]) -> None:
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
@@ -349,6 +449,10 @@ def render_pdf(blocks: list[Block]) -> None:
                 renderer.render_list_item(block)
             elif block.kind == "code":
                 renderer.render_code(block.text)
+            elif block.kind == "figure":
+                renderer.render_figure(block)
+            elif block.kind == "table":
+                renderer.render_table(block)
 
         renderer.finish_page()
 
