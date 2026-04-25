@@ -26,9 +26,9 @@ export function MedicalDisclaimer({
             Educational benchmark explorer only
           </h2>
           <p className="mt-2 text-sm leading-7 text-muted">
-            This project explains how clinical prediction models behave when data are incomplete.
-            It is not medical advice, not a diagnosis tool, and not designed for personal health
-            decisions.
+            This benchmark explorer shows how clinical prediction models behave when data are
+            incomplete. It is not medical advice, not a diagnosis tool, and not designed for
+            personal health decisions.
           </p>
         </div>
 

@@ -1,11 +1,11 @@
 # What Medical AI Doesn't Know
 
-This repository now has two connected layers:
+This repository has two connected parts:
 
 - a **config-driven research benchmark** for studying how clinical machine learning models behave when inputs are partially missing
-- a **public-facing web app** that turns those results into an interactive story about calibration, uncertainty, and trust
+- an **interactive web app** that turns those results into a readable explorer of calibration, uncertainty, and trust
 
-The benchmark is the engine. The app is the portfolio-facing identity.
+The benchmark produces the evidence. The web app helps people understand what the evidence means.
 
 ## What This Repo Does
 
@@ -23,10 +23,10 @@ For each dataset, the framework can:
 - save metrics, predictions, manifests, masks, figures, and the paper
 - export frontend-friendly JSON artifacts for the public app layer
 
-This repository can now be used in two ways:
+This repository can be used in two ways:
 
 - **Research mode:** rerun benchmarks, inspect saved artifacts, and extend the experimental framework
-- **Product mode:** use the exported artifacts and `web/` app to present the work as an interactive project about trustworthy medical AI under uncertainty
+- **Explorer mode:** open the `web/` app and inspect the saved benchmark results through an interactive interface
 
 ## Read This First
 
@@ -53,7 +53,7 @@ If you are new to the repo, start here:
 - `results/` holds numeric outputs such as metrics, predictions, manifests, and masks.
 - `figures/` holds image outputs.
 - `artifacts/frontend/` holds precomputed JSON files for the web app.
-- `web/` holds the Next.js + TypeScript public-facing application.
+- `web/` holds the Next.js + TypeScript browser app.
 - `docs/` holds the product brief, architecture notes, methodology, migration plan, and next-step docs.
 - `report/` holds the paper and the paper artifact map.
 - `tests/` holds the automated integrity checks.
@@ -265,7 +265,7 @@ The current web app includes:
 - a methodology page
 - an about page
 
-The app currently reads:
+The browser app reads:
 
 - `artifacts/frontend/paper_core_explorer.json`
 
@@ -297,6 +297,6 @@ For the clearest mapping between the report and the artifacts, see:
 
 - `report/paper_artifact_map.md`
 
-## Why This Project Matters
+## Why This Matters
 
-Missing-data robustness is not only about whether ROC-AUC stays high. A model can continue to rank patients reasonably well while producing probabilities that are less trustworthy. This project evaluates both discrimination and calibration, which makes it more informative than a simple accuracy-only benchmark.
+Missing-data robustness is not only about whether ROC-AUC stays high. A model can continue to rank patients reasonably well while producing probabilities that are less trustworthy. The benchmark evaluates both discrimination and calibration, which makes it more informative than an accuracy-only check.

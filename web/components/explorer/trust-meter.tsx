@@ -32,7 +32,7 @@ export function TrustMeter({
           <p className="mt-2 max-w-sm text-sm leading-7 text-muted">{copy.summary}</p>
           <p className="mt-3 max-w-sm text-xs leading-6 text-muted">
             Confidence is the probability a model reports. Trust asks whether that confidence still
-            deserves belief once calibration, stability, and missingness are taken into account.
+            holds up once calibration, stability, and missingness are taken into account.
           </p>
         </div>
         <div className="text-right">

@@ -45,7 +45,7 @@ export function trustCopy(band: TrustBand) {
   return {
     label: "Fragile under missingness",
     summary:
-      "This is the kind of setting where a responsible system should communicate uncertainty more explicitly and avoid sounding cleanly confident.",
+      "In this setting, uncertainty should be shown plainly instead of letting the output sound cleanly confident.",
   };
 }
 

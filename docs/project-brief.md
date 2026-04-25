@@ -6,22 +6,22 @@
 
 **Subtitle:** An interactive explorer of missing data, calibration, and trust in clinical prediction.
 
-This project turns an existing clinical machine learning robustness benchmark into a polished, public-facing web experience. The research benchmark remains the analytical engine, but the flagship identity becomes a user-facing product about a harder and more human question:
+The work turns an existing clinical machine learning robustness benchmark into an interactive web experience. The benchmark remains the analytical engine, but the main question is easier to see:
 
 **What should a medical model communicate when it has to make a prediction without all the information it needs?**
 
-The app is not a diagnosis tool, symptom checker, or AI doctor. It is an educational and analytical product that shows how missing information changes model behavior, why calibration matters, and why confidence should not automatically be treated as trustworthiness.
+The app is not a diagnosis tool, symptom checker, or AI doctor. It is an educational and analytical interface that shows how missing information changes model behavior, why calibration matters, and why confidence should not automatically be treated as trustworthiness.
 
 ## Why This Exists
 
-The project is meant to express a clear intellectual identity at the intersection of:
+The work sits at the intersection of:
 
 - medicine
 - computer science
 - statistics
 - uncertainty and decision-making
 
-The benchmark already shows rigor. What it does not yet show is product thinking, explanation design, or a memorable public-facing narrative. This project fills that gap by making the benchmark understandable to both nontechnical and technical audiences.
+The benchmark already shows the technical work. The interface adds the missing layer: an explanation of why the results matter to people who do not spend their day reading metric tables.
 
 ## Core Message
 
@@ -33,11 +33,11 @@ Missing data do not just reduce performance. They can change how trustworthy a p
 
 - General visitors who can understand a plain-English explanation in under a minute.
 - Technical readers who want to inspect metrics, calibration, methodology, and limitations.
-- Admissions readers, teachers, mentors, and judges who need to quickly understand both the rigor and the motivation behind the work.
+- Teachers, mentors, judges, and technical readers who need to quickly understand both the rigor and the motivation behind the work.
 
 ## Product Goals
 
-- Make the project feel like a serious, coherent flagship portfolio piece rather than a paper-only benchmark.
+- Make the work feel like a coherent research-and-interface project rather than a paper-only benchmark.
 - Preserve the rigor of the original research engine.
 - Communicate that trust in medical AI depends on calibration and uncertainty, not just ROC-AUC.
 - Create a memorable project that ties together medicine, CS, statistics, and lived experience with uncertainty.
@@ -54,7 +54,7 @@ Missing data do not just reduce performance. They can change how trustworthy a p
 
 ### Included
 
-- A polished landing page with a clear value proposition and disclaimer
+- A clear landing page with a plain-English value proposition and disclaimer
 - An interactive explorer with scenario, model, missingness mechanism, and missingness-rate controls
 - A plain-English explanation panel
 - Trust/stability communication that reflects calibration and degradation signals
@@ -76,6 +76,6 @@ Missing data do not just reduce performance. They can change how trustworthy a p
 
 - A nontechnical visitor understands the point quickly.
 - A technical visitor sees real modeling depth.
-- The app feels portfolio-ready and visually intentional.
-- The project clearly signals a CS + statistics identity with a medicine-facing mission.
+- The interface feels visually intentional and ready to share.
+- The project clearly connects computer science, statistics, and medicine-facing reliability.
 - The benchmark is still visible, but no longer the only story.

@@ -109,7 +109,7 @@ Copy principle:
 - Never anthropomorphize the model as if it "understands" the patient.
 - Prefer "the model appears more fragile under this setting" over dramatic claims.
 
-## Portfolio Positioning
+## Project Positioning
 
 Short description:
 
@@ -117,4 +117,4 @@ Short description:
 
 Longer positioning:
 
-This project combines a reproducible clinical ML robustness benchmark with a public-facing interface that explains how missing data affect both performance and trustworthiness in high-stakes prediction systems.
+A reproducible clinical ML robustness benchmark sits behind an interface that explains how missing data affect both performance and trustworthiness in high-stakes prediction systems.

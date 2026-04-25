@@ -2,7 +2,7 @@
 
 ## Scope
 
-This project studies how clinical prediction models behave when parts of the input data are missing. The goal is not to build a diagnostic tool. The goal is to understand how robustness and trustworthiness change under controlled missing-data conditions.
+The benchmark studies how clinical prediction models behave when parts of the input data are missing. The goal is not to build a diagnostic tool. The goal is to understand how robustness and trustworthiness change under controlled missing-data conditions.
 
 ## Datasets
 
@@ -33,7 +33,7 @@ Three controlled mechanisms are injected:
 - **MAR**: missingness depends on other observed variables
 - **MNAR**: missingness depends on the value being hidden
 
-The app should explain these mechanisms plainly because they lead to different degradation patterns and different trust implications.
+The interface should explain these mechanisms plainly because they lead to different degradation patterns and different trust implications.
 
 ## Missingness Rates
 
@@ -48,7 +48,7 @@ These rates are high enough to make degradation patterns visible without making 
 
 ## Evaluation Metrics
 
-This project treats calibration-sensitive metrics as first-class outcomes.
+Calibration-sensitive metrics are treated as first-class outcomes.
 
 ### Discrimination
 
@@ -68,7 +68,7 @@ This distinction matters because a model can still rank cases reasonably well wh
 
 ## Canonical Benchmark Path
 
-The public-facing app should draw first from the canonical paper-facing benchmark path:
+The browser app should draw first from the canonical paper-facing benchmark path:
 
 - runner: `src/experiments/run_configured_experiment.py`
 - preset entry point: `scripts/run_paper_core.ps1`
@@ -81,7 +81,7 @@ The public-facing app should draw first from the canonical paper-facing benchmar
 - The public app is educational and analytical, not diagnostic.
 - The current app summarizes scenario-level trends and selected reliability views; future versions can expose richer fold-level calibration artifacts.
 
-## How The App Should Talk About Results
+## How Results Should Be Described
 
 - Avoid saying a model is "good" in general.
 - Prefer saying a model appears more stable, more fragile, or less trustworthy under specific missing-data conditions.

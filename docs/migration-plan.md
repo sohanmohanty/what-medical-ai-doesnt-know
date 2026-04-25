@@ -2,13 +2,13 @@
 
 ## Goal
 
-Transform the current repository from a research benchmark with saved artifacts into a flagship, user-facing project centered on trustworthy medical AI under uncertainty.
+Transform the current repository from a research benchmark with saved artifacts into an interactive project about how medical AI behaves when information is missing.
 
 ## Guiding Principle
 
 Do not replace the benchmark. Wrap it.
 
-The strongest technical move is to preserve the research core and add a presentation layer that makes the work accessible, memorable, and portfolio-ready.
+The strongest technical move is to preserve the research core and add a presentation layer that makes the work easier to understand.
 
 ## Phase 1: Audit And Product Definition
 
@@ -16,7 +16,7 @@ The strongest technical move is to preserve the research core and add a presenta
 
 - inspect the existing repo
 - identify what should remain canonical
-- define the public-facing product identity
+- define the public explanation layer
 - document the architecture and migration path
 
 ### Status
@@ -104,7 +104,7 @@ The strongest technical move is to preserve the research core and add a presenta
 
 - add richer feature-level missingness summaries
 - document trust-score thresholds in the methodology
-- refine mobile layouts and capture portfolio screenshots
+- refine mobile layouts and capture clear screenshots
 - introduce feature-dropout interaction only after artifact support exists
 - deploy a preview build
 
@@ -114,4 +114,4 @@ The strongest technical move is to preserve the research core and add a presenta
 - the explorer uses real benchmark-derived data
 - the technical mode exposes calibration-sensitive metrics
 - the methodology page explains the setup and limitations responsibly
-- the repo reads like a coherent flagship project, not only a benchmark archive
+- the repo reads like a coherent research-and-interface project, not only a benchmark archive

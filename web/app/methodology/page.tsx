@@ -11,9 +11,9 @@ export default async function MethodologyPage() {
           The benchmark behind the experience
         </h1>
         <p className="mt-5 text-lg leading-9 text-muted">
-          This page explains the data, model families, missingness patterns, and evaluation choices
-          behind the project. The goal is transparency: visitors can see what the interface is
-          built on, and where its limits are.
+          Here are the data, model families, missingness patterns, and evaluation choices behind
+          the explorer. The goal is transparency: visitors can see what the interface is built on
+          and where its limits are.
         </p>
       </section>
       <section className="grid gap-6 lg:grid-cols-2">
@@ -61,9 +61,9 @@ export default async function MethodologyPage() {
             Confidence is a claim. Trust is a check on that claim.
           </h2>
           <p className="mt-3 text-sm leading-7 text-muted">
-            In this project, confidence refers to the probability a model reports. Trust refers to
-            whether that probability remains believable after checking calibration, robustness, and
-            the amount of missing information.
+            Here, confidence means the probability a model reports. Trust means checking whether
+            that probability remains believable after looking at calibration, robustness, and the
+            amount of missing information.
           </p>
         </article>
 
@@ -102,8 +102,8 @@ export default async function MethodologyPage() {
           <div className="rounded-[1.5rem] border border-line/70 bg-white/90 p-5">
             <h2 className="text-2xl font-semibold text-ink">Educational, not diagnostic</h2>
             <p className="mt-3 text-sm leading-7 text-muted">
-              This project is meant to show how trustworthiness changes under incomplete
-              information. It should never be used for personal medical decisions.
+              The explorer shows how trustworthiness changes under incomplete information. It
+              should never be used for personal medical decisions.
             </p>
           </div>
         </div>

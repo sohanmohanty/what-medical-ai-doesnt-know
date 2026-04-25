@@ -100,9 +100,9 @@ export default async function HomePage() {
           </div>
 
           <p className="mt-5 rounded-[1.5rem] border border-line/70 bg-white/75 p-4 text-sm leading-7 text-muted">
-            The exact probability is not the whole story. This project asks whether the probability
-            still deserves trust after missingness, calibration, and model stability are taken into
-            account.
+            The exact probability is not the whole story. The harder question is whether that
+            probability still deserves trust after missingness, calibration, and model stability are
+            taken into account.
           </p>
 
           <div className="mt-5 grid gap-3 text-sm sm:grid-cols-3">
@@ -130,7 +130,7 @@ export default async function HomePage() {
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-8 text-muted">
             A model can sound very sure of itself and still be wrong about how trustworthy that
-            confidence really is. This project is built to make that gap visible.
+            confidence really is. The explorer makes that gap visible.
           </p>
         </article>
 
@@ -149,7 +149,7 @@ export default async function HomePage() {
           <article className="surface-panel p-6">
             <p className="eyebrow">Trust</p>
             <h3 className="mt-4 text-2xl font-semibold text-ink">
-              Whether that confidence still deserves belief
+              Whether that confidence still holds up
             </h3>
             <p className="mt-3 text-sm leading-7 text-muted">
               Trust asks whether the probability still lines up with reality once we check
@@ -239,8 +239,8 @@ export default async function HomePage() {
             Built for clarity, grounded in evidence
           </h2>
           <p className="mt-4 text-base leading-8 text-muted">
-            Behind the visuals is a real benchmark, not a decorative demo. The goal is to make
-            missing-data behavior understandable without flattening the statistical story.
+            The charts are backed by saved benchmark outputs, not made-up demo numbers. The goal is
+            to make missing-data behavior understandable without flattening the statistical story.
           </p>
         </article>
       </section>
@@ -315,9 +315,9 @@ export default async function HomePage() {
             A model can still look accurate while becoming less reliable.
           </h2>
           <p className="mt-4 text-base leading-8 text-muted">
-            That distinction is the heart of this project. Ranking and calibration do not always
-            fail together, and a confident-looking model can still drift away from trustworthy
-            probability estimates. The goal here is to make that difference visible.
+            Ranking and calibration do not always fail together. A confident-looking model can still
+            drift away from trustworthy probability estimates, and that difference is what the
+            explorer is built to show.
           </p>
         </article>
       </section>

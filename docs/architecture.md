@@ -10,7 +10,7 @@ The current repository is already a strong research system. Its strongest qualit
 - automated checks in `tests/`
 - a canonical paper-facing path centered on `paper_core`
 
-In other words, the repo already contains a real engine. The current architecture preserves that engine and adds a public-facing product layer on top.
+In other words, the repo already contains a real engine. The current architecture preserves that engine and adds a readable interface on top.
 
 ## What The Repo Currently Does
 
@@ -43,20 +43,20 @@ These pieces should remain the analytical foundation:
 
 ## What Feels Too Research-Only
 
-These are valuable, but they are not enough for a flagship portfolio app on their own:
+These are valuable, but they are not enough on their own for someone opening the project cold:
 
 - CSV-heavy outputs without a frontend contract
 - figure and paper assets that require substantial context to understand
 - many focused historical scripts that are good for provenance but not for product integration
-- no stable public-facing narrative layer
+- no stable explanation layer for nontechnical visitors
 - no interaction model for nontechnical visitors
 - no deterministic explanation system translating metrics into plain language
 
-## What The User-Facing Application Adds
+## What The Interface Adds
 
-The user-facing layer is intentionally product-facing rather than model-facing:
+The interface layer is intentionally explanation-facing rather than model-facing:
 
-- a polished web frontend
+- a web frontend
 - a frontend-friendly artifact format
 - a deterministic explanation layer
 - a trust/stability mapping derived from stored benchmark metrics
@@ -82,7 +82,7 @@ This layer continues to generate canonical experiment outputs.
 
 This layer reads saved benchmark summaries and emits a stable JSON contract for the web app. It is intentionally lightweight and uses precomputed artifacts instead of a live backend.
 
-### Layer 3: Public-Facing Web App
+### Layer 3: Web Explorer
 
 - `web/`
 
@@ -138,7 +138,7 @@ This supports:
 
 ## Why No Backend Yet
 
-A backend is unnecessary for the first flagship version because:
+A backend is unnecessary for the first version because:
 
 - the research outputs are already precomputed
 - the product is educational and analytical, not transactional
