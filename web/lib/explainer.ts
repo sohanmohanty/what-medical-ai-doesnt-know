@@ -154,7 +154,7 @@ function rankingNarrative(delta: number) {
 
 function probabilityNarrative(eceDelta: number, brierDelta: number) {
   if (eceDelta > 0.03 || brierDelta > 0.03) {
-    return "The probability estimate deserves strong caution because calibration-sensitive metrics deteriorate much faster than a casual visitor might expect.";
+    return "The probability estimate deserves strong caution because calibration-sensitive metrics deteriorate faster than the headline score alone suggests.";
   }
 
   if (eceDelta > 0.012 || brierDelta > 0.012) {
@@ -183,7 +183,7 @@ export function buildScenarioExplanation(
     headline: trust.label,
     overview: `${mechanism.longLabel} at ${formatRate(scenario.rate)} missingness removes a meaningful share of the information available to ${model.label} on ${dataset.label}.`,
     severityRead: `${severity.badge}: about ${formatPercent(scenario.severity.actualRate)} of the test-time information is missing in this scenario. ${scenario.severity.summary}`,
-    whyItMoves: `${mechanism.audienceSummary} ${dataset.audienceSummary}`,
+    whyItMoves: `${mechanism.plainSummary} ${dataset.plainSummary}`,
     stabilityRead: rankingNarrative(scenario.meanRocAucChange),
     probabilityRead: probabilityNarrative(scenario.meanEceChange, scenario.meanBrierChange),
     comparisonRead: comparisonNarrative(scenario, peers, modelLabelLookup),

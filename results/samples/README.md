@@ -15,4 +15,4 @@ Each sample run gets its own subfolder. A sample run folder can contain:
 - `run_manifest.json`
 - `masks/` when enabled
 
-These outputs are meant for quick checks and demonstrations, not for the official tracked project record.
+These outputs are meant for quick checks and reproducibility inspection, not for the official tracked project record.

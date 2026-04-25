@@ -2,7 +2,7 @@
 
 This directory stores the numeric outputs of the project.
 
-If `src/` is the machinery, `results/` is where the machinery drops its tables and run receipts.
+The benchmark pipeline writes metrics, predictions, masks, manifests, and run summaries here.
 
 ## Top-Level Exports
 
@@ -32,7 +32,7 @@ The canonical paper-facing benchmark preset writes:
 - `masks/paper_core/`
 - figures under `../figures/runs/paper_core/`
 
-The broader default benchmark config writes:
+When run, the broader default benchmark config writes:
 
 - `metrics/core_missingness_grid_metrics.csv`
 - `metrics/core_missingness_grid_summary.csv`
@@ -58,7 +58,7 @@ Each sample run folder can contain:
 
 ## Custom User Runs
 
-Non-canonical custom runs you launch yourself are kept separate from built-in samples and official tracked outputs.
+Non-canonical custom runs are kept separate from built-in samples and official tracked outputs.
 
 They are written under:
 

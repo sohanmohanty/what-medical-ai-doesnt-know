@@ -21,7 +21,7 @@ DATASET_METADATA = {
     "wdbc": {
         "label": "Breast Tumor Classification",
         "shortLabel": "WDBC",
-        "audienceSummary": (
+        "plainSummary": (
             "A cleaner benchmark where models often stay strong overall, which makes calibration drift "
             "especially important to notice."
         ),
@@ -37,7 +37,7 @@ DATASET_METADATA = {
     "statlog_heart": {
         "label": "Heart Disease Classification",
         "shortLabel": "Statlog Heart",
-        "audienceSummary": (
+        "plainSummary": (
             "A smaller, noisier benchmark where missingness exposes fragility more quickly and trust signals "
             "are easier to see."
         ),
@@ -55,15 +55,15 @@ DATASET_METADATA = {
 MODEL_METADATA = {
     "logistic_regression": {
         "label": "Logistic Regression",
-        "audienceSummary": "Often easier to reason about and sometimes gentler on calibration-sensitive metrics.",
+        "plainSummary": "Often easier to reason about and sometimes gentler on calibration-sensitive metrics.",
     },
     "random_forest": {
         "label": "Random Forest",
-        "audienceSummary": "Often the steadiest overall core model in the canonical benchmark.",
+        "plainSummary": "Often the steadiest overall core model in the canonical benchmark.",
     },
     "gradient_boosting": {
         "label": "Gradient Boosting",
-        "audienceSummary": "Competitive when conditions are mild, but more brittle in harsher missing-data settings.",
+        "plainSummary": "Competitive when conditions are mild, but more brittle in harsher missing-data settings.",
     },
 }
 
@@ -71,17 +71,17 @@ MECHANISM_METADATA = {
     "mcar": {
         "label": "MCAR",
         "longLabel": "Missing Completely At Random",
-        "audienceSummary": "Values disappear without depending on the patient state in the present simulation.",
+        "plainSummary": "Values disappear without depending on the patient state in the present simulation.",
     },
     "mar": {
         "label": "MAR",
         "longLabel": "Missing At Random",
-        "audienceSummary": "Missingness depends on other observed variables, not purely by chance.",
+        "plainSummary": "Missingness depends on other observed variables, not purely by chance.",
     },
     "mnar": {
         "label": "MNAR",
         "longLabel": "Missing Not At Random",
-        "audienceSummary": "Missingness is tied to the value being hidden in the present construction.",
+        "plainSummary": "Missingness is tied to the value being hidden in the present construction.",
     },
 }
 
@@ -121,7 +121,7 @@ def _severity_summary(actual_rate: float) -> str:
     if label == "mild":
         return "Only a limited share of the input is missing, so the trust question is more about subtle drift than collapse."
     if label == "moderate":
-        return "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        return "A meaningful share of the input is missing, so probability quality should matter more visibly."
     if label == "heavy":
         return "The model is operating with a substantial information gap, so caution should become part of the story."
     return "Nearly half the relevant input is missing, which is the kind of setting where confident language can become misleading."

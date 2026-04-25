@@ -1,8 +1,6 @@
 # Paper Figures
 
-This folder stores the curated figures used by the report and the main presentation-facing story of the project.
-
-In plain English, this is the "final figures" folder.
+This folder stores the curated figures used by the report.
 
 These images are the ones referenced by:
 

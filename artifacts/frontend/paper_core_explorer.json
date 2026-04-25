@@ -1,5 +1,5 @@
 {
-  "generatedAtUtc": "2026-04-25T18:02:12.789425+00:00",
+  "generatedAtUtc": "2026-04-25T22:28:15.544641+00:00",
   "source": {
     "runName": "paper_core",
     "summaryPath": "results/metrics/paper_core_summary.csv",
@@ -21,7 +21,7 @@
       "id": "wdbc",
       "label": "Breast Tumor Classification",
       "shortLabel": "WDBC",
-      "audienceSummary": "A cleaner benchmark where models often stay strong overall, which makes calibration drift especially important to notice.",
+      "plainSummary": "A cleaner benchmark where models often stay strong overall, which makes calibration drift especially important to notice.",
       "difficulty": "more separable",
       "exampleFeatures": [
         "mean radius",
@@ -35,7 +35,7 @@
       "id": "statlog_heart",
       "label": "Heart Disease Classification",
       "shortLabel": "Statlog Heart",
-      "audienceSummary": "A smaller, noisier benchmark where missingness exposes fragility more quickly and trust signals are easier to see.",
+      "plainSummary": "A smaller, noisier benchmark where missingness exposes fragility more quickly and trust signals are easier to see.",
       "difficulty": "more fragile",
       "exampleFeatures": [
         "age",
@@ -50,17 +50,17 @@
     {
       "id": "logistic_regression",
       "label": "Logistic Regression",
-      "audienceSummary": "Often easier to reason about and sometimes gentler on calibration-sensitive metrics."
+      "plainSummary": "Often easier to reason about and sometimes gentler on calibration-sensitive metrics."
     },
     {
       "id": "random_forest",
       "label": "Random Forest",
-      "audienceSummary": "Often the steadiest overall core model in the canonical benchmark."
+      "plainSummary": "Often the steadiest overall core model in the canonical benchmark."
     },
     {
       "id": "gradient_boosting",
       "label": "Gradient Boosting",
-      "audienceSummary": "Competitive when conditions are mild, but more brittle in harsher missing-data settings."
+      "plainSummary": "Competitive when conditions are mild, but more brittle in harsher missing-data settings."
     }
   ],
   "mechanisms": [
@@ -68,19 +68,19 @@
       "id": "mcar",
       "label": "MCAR",
       "longLabel": "Missing Completely At Random",
-      "audienceSummary": "Values disappear without depending on the patient state in the present simulation."
+      "plainSummary": "Values disappear without depending on the patient state in the present simulation."
     },
     {
       "id": "mar",
       "label": "MAR",
       "longLabel": "Missing At Random",
-      "audienceSummary": "Missingness depends on other observed variables, not purely by chance."
+      "plainSummary": "Missingness depends on other observed variables, not purely by chance."
     },
     {
       "id": "mnar",
       "label": "MNAR",
       "longLabel": "Missing Not At Random",
-      "audienceSummary": "Missingness is tied to the value being hidden in the present construction."
+      "plainSummary": "Missingness is tied to the value being hidden in the present construction."
     }
   ],
   "rates": [
@@ -1483,7 +1483,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.199643,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.961349,
       "meanRocAuc": 0.990779,
@@ -2531,7 +2531,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.200691,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.974546,
       "meanRocAuc": 0.993928,
@@ -3579,7 +3579,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.205088,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.974538,
       "meanRocAuc": 0.993727,
@@ -4627,7 +4627,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.199643,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.948137,
       "meanRocAuc": 0.988557,
@@ -5675,7 +5675,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.200691,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.953416,
       "meanRocAuc": 0.990532,
@@ -6723,7 +6723,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.205088,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.953416,
       "meanRocAuc": 0.990765,
@@ -7771,7 +7771,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.199643,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.944651,
       "meanRocAuc": 0.988172,
@@ -8819,7 +8819,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.200691,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.952546,
       "meanRocAuc": 0.990865,
@@ -9867,7 +9867,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.205088,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.956047,
       "meanRocAuc": 0.990231,
@@ -10817,7 +10817,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.201994,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.8,
       "meanRocAuc": 0.878611,
@@ -11473,7 +11473,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.190741,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.844444,
       "meanRocAuc": 0.901806,
@@ -12129,7 +12129,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.202469,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.851852,
       "meanRocAuc": 0.902361,
@@ -12785,7 +12785,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.201994,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.788889,
       "meanRocAuc": 0.868264,
@@ -13441,7 +13441,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.190741,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.842593,
       "meanRocAuc": 0.9075,
@@ -14097,7 +14097,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.202469,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.838889,
       "meanRocAuc": 0.903958,
@@ -14753,7 +14753,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.201994,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.77037,
       "meanRocAuc": 0.849722,
@@ -15409,7 +15409,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.190741,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.82037,
       "meanRocAuc": 0.88875,
@@ -16065,7 +16065,7 @@
       "severity": {
         "label": "moderate",
         "actualRate": 0.202469,
-        "summary": "A meaningful share of the input is missing, so visitors should expect probability quality to matter more visibly."
+        "summary": "A meaningful share of the input is missing, so probability quality should matter more visibly."
       },
       "meanAccuracy": 0.82037,
       "meanRocAuc": 0.885833,

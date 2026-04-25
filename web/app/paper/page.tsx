@@ -7,7 +7,7 @@ export default function PaperPage() {
           The full academic report behind the explorer.
         </h1>
         <p className="mt-5 max-w-3xl text-lg leading-9 text-muted">
-          The website is the public-facing interpretation layer. The paper is the technical
+          The website provides an interactive interpretation of the benchmark. The paper is the technical
           artifact: it describes the benchmark design, missing-data mechanisms, model comparisons,
           calibration metrics, figures, limitations, and references.
         </p>

@@ -287,7 +287,7 @@ export function ExplorerClient({ data }: { data: ExplorerArtifact }) {
         <section className="space-y-6">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-start">
             <article className="surface-panel p-6 sm:p-8">
-              <p className="eyebrow">Plain-English reading</p>
+              <p className="eyebrow">Plain-language reading</p>
               <h3 className="mt-4 text-2xl font-semibold text-ink">{explanation.headline}</h3>
               <div className="mt-6 space-y-5 text-base leading-8 text-muted">
                 <p>{explanation.overview}</p>

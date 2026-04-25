@@ -12,7 +12,7 @@ export default async function MethodologyPage() {
         </h1>
         <p className="mt-5 text-lg leading-9 text-muted">
           Here are the data, model families, missingness patterns, and evaluation choices behind
-          the explorer. The goal is transparency: visitors can see what the interface is built on
+          the explorer. The goal is transparency: the interface shows what it is built on
           and where its limits are.
         </p>
       </section>
@@ -23,7 +23,7 @@ export default async function MethodologyPage() {
             {data.datasets.map((dataset) => (
               <div key={dataset.id} className="rounded-[1.5rem] border border-line/70 bg-white/90 p-5">
                 <h2 className="text-2xl font-semibold text-ink">{dataset.label}</h2>
-                <p className="mt-3 text-sm leading-7 text-muted">{dataset.audienceSummary}</p>
+                <p className="mt-3 text-sm leading-7 text-muted">{dataset.plainSummary}</p>
               </div>
             ))}
           </div>
@@ -35,7 +35,7 @@ export default async function MethodologyPage() {
             {data.models.map((model) => (
               <div key={model.id} className="rounded-[1.5rem] border border-line/70 bg-white/90 p-5">
                 <h2 className="text-2xl font-semibold text-ink">{model.label}</h2>
-                <p className="mt-3 text-sm leading-7 text-muted">{model.audienceSummary}</p>
+                <p className="mt-3 text-sm leading-7 text-muted">{model.plainSummary}</p>
               </div>
             ))}
           </div>
@@ -49,7 +49,7 @@ export default async function MethodologyPage() {
             {data.mechanisms.map((mechanism) => (
               <div key={mechanism.id} className="rounded-[1.5rem] border border-line/70 bg-white/90 p-5">
                 <h2 className="text-2xl font-semibold text-ink">{mechanism.longLabel}</h2>
-                <p className="mt-3 text-sm leading-7 text-muted">{mechanism.audienceSummary}</p>
+                <p className="mt-3 text-sm leading-7 text-muted">{mechanism.plainSummary}</p>
               </div>
             ))}
           </div>

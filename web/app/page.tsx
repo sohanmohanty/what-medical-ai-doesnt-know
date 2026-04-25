@@ -223,7 +223,7 @@ export default async function HomePage() {
       <section className="grid gap-6 lg:grid-cols-3">
         <article className="surface-panel p-7">
           <p className="eyebrow">General mode</p>
-          <h2 className="mt-5 text-3xl font-semibold text-ink">Plain English first</h2>
+          <h2 className="mt-5 text-3xl font-semibold text-ink">Plain language first</h2>
           <p className="mt-4 text-base leading-8 text-muted">
             Start with a plain-language reading of what changed, why it changed, and whether a
             reported probability should still be trusted.
@@ -245,7 +245,7 @@ export default async function HomePage() {
             Built for clarity, grounded in evidence
           </h2>
           <p className="mt-4 text-base leading-8 text-muted">
-            The charts are backed by saved benchmark outputs, not decorative placeholder values.
+            The charts are backed by saved benchmark outputs, not illustrative values.
             The goal is to make missing-data behavior understandable without flattening the
             statistical story.
           </p>

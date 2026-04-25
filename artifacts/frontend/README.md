@@ -1,8 +1,8 @@
 # Frontend Artifacts
 
-This directory stores precomputed JSON files intended for the public-facing web app.
+This directory stores precomputed JSON files intended for the web app.
 
-The first MVP artifact is:
+The primary explorer artifact is:
 
 - `paper_core_explorer.json`
 

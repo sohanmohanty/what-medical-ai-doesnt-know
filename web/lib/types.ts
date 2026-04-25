@@ -4,7 +4,7 @@ export interface DatasetMeta {
   id: string;
   label: string;
   shortLabel: string;
-  audienceSummary: string;
+  plainSummary: string;
   difficulty: string;
   exampleFeatures: string[];
 }
@@ -12,14 +12,14 @@ export interface DatasetMeta {
 export interface ModelMeta {
   id: string;
   label: string;
-  audienceSummary: string;
+  plainSummary: string;
 }
 
 export interface MechanismMeta {
   id: string;
   label: string;
   longLabel: string;
-  audienceSummary: string;
+  plainSummary: string;
 }
 
 export interface MetricSnapshot {

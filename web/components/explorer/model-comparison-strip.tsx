@@ -56,7 +56,7 @@ export function ModelComparisonStrip({
                 {modelMeta[entry.model].label}
               </h4>
 
-              <p className="mt-3 text-sm leading-7 text-muted">{modelMeta[entry.model].audienceSummary}</p>
+              <p className="mt-3 text-sm leading-7 text-muted">{modelMeta[entry.model].plainSummary}</p>
 
               <div className="mt-5 grid gap-3 text-sm">
                 <div className="flex items-center justify-between">

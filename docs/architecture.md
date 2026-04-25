@@ -94,6 +94,6 @@ Public benchmark datasets
 
 ## Static Artifact Model
 
-The current web app is intentionally static. Benchmark runs happen in Python, then a JSON artifact is exported for the interface. This keeps the public-facing experience reproducible, easy to deploy, and separate from any personal medical-data handling.
+The current web app is intentionally static. Benchmark runs happen in Python, then a JSON artifact is exported for the interface. This keeps the deployed experience reproducible, easy to inspect, and separate from any personal medical-data handling.
 
 A server layer would only be useful for a later version that needs dynamic simulations or richer artifact browsing beyond precomputed results.

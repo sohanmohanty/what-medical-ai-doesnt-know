@@ -4,7 +4,11 @@ An interactive research project about clinical machine learning under missing da
 
 Created by Sohan Mohanty.
 
-This repository combines a reproducible Python benchmark with a polished web explorer and a scholarly report. The central question is simple:
+**Live site:** https://what-medical-ai-doesnt-know.vercel.app/
+
+**Research paper:** https://what-medical-ai-doesnt-know.vercel.app/paper.pdf
+
+This repository combines a reproducible Python benchmark with an interactive web explorer and a scholarly report. The study asks:
 
 > How much should we trust a medical prediction model when part of the patient record is missing?
 
@@ -14,15 +18,15 @@ Copyright (c) 2026 Sohan Mohanty. All rights reserved.
 
 ## Start Here
 
-If you want the quick public overview:
+Suggested reading order:
 
-1. Open the web app in `web/` to understand the project visually.
-2. Read `report/paper.pdf` for the research write-up.
-3. Read `docs/methodology.md` for the plain-English methodology.
+1. Open the live site: https://what-medical-ai-doesnt-know.vercel.app/
+2. Read `report/paper.pdf` for the repository copy of the research write-up.
+3. Read `docs/methodology.md` for the methodology overview.
 4. Inspect `artifacts/frontend/paper_core_explorer.json` to see the benchmark-to-app artifact.
 5. Use `scripts/run_paper_core.ps1` if you want to rerun the canonical benchmark.
 
-If you are evaluating the technical work, start with `report/paper.pdf`. The paper is the primary academic artifact; the website is a companion interface that makes the benchmark easier to interpret.
+The paper is the primary academic artifact. The website is a companion interface that makes the benchmark easier to inspect and interpret.
 
 The benchmark produces the evidence. The web app makes that evidence understandable.
 
@@ -38,7 +42,7 @@ The benchmark evaluates:
 - metrics: accuracy, ROC-AUC, Brier score, expected calibration error, and reliability diagrams
 - robustness questions: whether ranking performance and probability trust degrade in the same way
 
-The main lesson is that a model can still rank cases reasonably well while its reported probabilities become less trustworthy. That distinction matters in high-stakes settings.
+The central finding is that a model can still rank cases reasonably well while its reported probabilities become less trustworthy. That distinction matters in high-stakes settings.
 
 ## Project Artifacts
 
@@ -51,7 +55,7 @@ The main lesson is that a model can still rank cases reasonably well while its r
 - `results/metrics/paper_core_summary.csv` contains canonical benchmark summaries.
 - `results/predictions/paper_core_predictions.csv` contains prediction-level outputs used for reliability views.
 - `figures/paper/` contains curated figures used in the paper.
-- `docs/` contains the project brief, architecture, methodology, migration plan, and content strategy.
+- `docs/` contains methodology, architecture, and deployment notes.
 
 ## Run The Web App
 
@@ -79,18 +83,28 @@ cd C:\path\to\robust-missing-clinical-ml\web
 & "C:\Program Files\nodejs\npm.cmd" run dev
 ```
 
-## Publish A Clickable Website
+## Deployment
 
-For admissions readers or judges, the website should be deployed as a normal public link rather than requiring anyone to download the repo. The public link should introduce the idea quickly, while the repository and paper should demonstrate the technical depth.
+The web app is designed for static deployment from the `web/` directory. The current deployment is available at:
 
-The simplest path is:
+```text
+https://what-medical-ai-doesnt-know.vercel.app/
+```
 
-1. Create a GitHub account.
-2. Push this repository to GitHub.
-3. Create a Vercel account and import the GitHub repository.
-4. Set the Vercel project root directory to `web`.
-5. Use the default Next.js build command, `npm run build`.
-6. Deploy and share the generated `vercel.app` URL.
+The deployed site also serves the formatted paper directly at:
+
+```text
+https://what-medical-ai-doesnt-know.vercel.app/paper.pdf
+```
+
+Current deployment settings:
+
+- Hosting: Vercel
+- Framework preset: Next.js
+- Project root: `web`
+- Install command: `npm install`
+- Build command: `npm run build`
+- Output directory: Next.js default
 
 The web app is designed for this workflow. It reads a deployable artifact at `web/data/paper_core_explorer.json`, which is refreshed by:
 
@@ -99,8 +113,6 @@ python scripts\export_frontend_artifacts.py
 ```
 
 The research source of truth remains in `results/`, `figures/`, `artifacts/`, and `report/`. The website is the interpretation layer that makes those outputs easier to explore.
-
-The deployed site also serves the formatted paper directly at `/paper.pdf`.
 
 ## Reproduce The Research Pipeline
 
@@ -154,16 +166,16 @@ pytest
 - `figures/` stores generated figures.
 - `artifacts/frontend/` stores static app-ready JSON artifacts.
 - `web/` contains the browser interface.
-- `docs/` contains planning, methodology, architecture, and content documentation.
+- `docs/` contains technical documentation for methodology, architecture, and deployment.
 - `report/` contains the paper and artifact map.
 - `tests/` contains automated integrity checks.
 - `notebooks/` contains supporting exploratory work.
 
 ## Authorship And Use
 
-This project was created by Sohan Mohanty as an independent research and portfolio project. If you reference the work, please cite the repository using `CITATION.cff`.
+This project was created by Sohan Mohanty as an independent research project. If you reference the work, please cite the repository using `CITATION.cff`.
 
-This repository is currently shared without an open-source license. Unless a license is added later, no permission is granted for reuse, redistribution, or derivative works beyond normal viewing and evaluation.
+This repository is currently shared without an open-source license. Unless a license is added later, no permission is granted for reuse, redistribution, or derivative works beyond normal viewing and citation.
 
 ## Research Design
 
@@ -180,13 +192,9 @@ This distinction is the reason the project emphasizes Brier score, ECE, and reli
 
 Useful documentation files:
 
-- `docs/project-brief.md`: project purpose and audience.
 - `docs/architecture.md`: how the benchmark, artifacts, and web app fit together.
-- `docs/deployment.md`: how to publish the web app as a clickable public link.
+- `docs/deployment.md`: deployment configuration for the web app.
 - `docs/methodology.md`: explanation of datasets, missingness, models, and metrics.
-- `docs/migration-plan.md`: completed migration work and future development path.
-- `docs/content-strategy.md`: public-facing language and narrative guardrails.
-- `docs/next-steps.md`: current development priorities.
 
 ## Scope And Limitations
 

@@ -49,4 +49,4 @@ The repo should currently be read as:
 
 - one canonical official benchmark path for the main comparative study
 - retained extension outputs for focused analyses that have not yet been fully unified
-- a companion frontend artifact for interpretation and presentation
+- a companion frontend artifact for interpretation and exploration
