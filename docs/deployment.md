@@ -2,6 +2,8 @@
 
 The public website should be accessed through a hosted URL. Admissions readers, teachers, and judges should not need to clone the repository or run a local development server.
 
+The deployed website is not the main technical artifact. It is the public interpretation layer. The research paper and saved benchmark outputs remain the technical evidence for the project.
+
 ## Recommended Path
 
 Use GitHub for the repository and Vercel for hosting the Next.js app.
@@ -46,7 +48,7 @@ For a portfolio or application, share:
 - the repository URL
 - the paper path: `report/paper.pdf`
 
-The website is the accessible interpretation layer. The repository and paper carry the technical depth.
+The website gives a fast entry point. The paper should be used to show the statistical analysis, experimental design, calibration results, and reproducibility of the benchmark.
 
 ## Pre-Deployment Checklist
 

@@ -10,13 +10,15 @@ The project is educational and research-oriented. It is not medical advice, not 
 
 ## Start Here
 
-If you are viewing the project for the first time, the best path is:
+If you want the quick public overview:
 
 1. Open the web app in `web/` to understand the project visually.
 2. Read `report/paper.pdf` for the research write-up.
 3. Read `docs/methodology.md` for the plain-English methodology.
 4. Inspect `artifacts/frontend/paper_core_explorer.json` to see the benchmark-to-app artifact.
 5. Use `scripts/run_paper_core.ps1` if you want to rerun the canonical benchmark.
+
+If you are evaluating the technical work, start with `report/paper.pdf`. The paper is the primary academic artifact; the website is a companion interface that makes the benchmark easier to interpret.
 
 The benchmark produces the evidence. The web app makes that evidence understandable.
 
@@ -74,7 +76,7 @@ cd C:\path\to\robust-missing-clinical-ml\web
 
 ## Publish A Clickable Website
 
-For admissions readers or judges, the website should be deployed as a normal public link rather than requiring anyone to download the repo.
+For admissions readers or judges, the website should be deployed as a normal public link rather than requiring anyone to download the repo. The public link should introduce the idea quickly, while the repository and paper should demonstrate the technical depth.
 
 The simplest path is:
 
