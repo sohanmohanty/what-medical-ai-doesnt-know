@@ -1,4 +1,13 @@
-const paperPdfUrl = "/paper.pdf?v=2026-06-08-table-layout";
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+const paperPdfVersion = createHash("sha256")
+  .update(readFileSync(join(process.cwd(), "public", "paper.pdf")))
+  .digest("hex")
+  .slice(0, 12);
+
+const paperPdfUrl = `/paper.pdf?v=${paperPdfVersion}`;
 
 export default function PaperPage() {
   return (
