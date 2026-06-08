@@ -158,11 +158,12 @@ def wrap_text(
     width: float = CONTENT_W,
     *,
     break_long_words: bool = False,
+    min_chars: int = 28,
 ) -> list[str]:
     # Use a conservative character-width estimate because PDF text is not clipped
     # to the logical column. This protects the right margin on long scientific lines.
     average_char_width = font_size * 0.56
-    max_chars = max(28, int(width * 72 / average_char_width))
+    max_chars = max(min_chars, int(width * 72 / average_char_width))
     should_break = break_long_words or any(len(token) > max_chars for token in text.split())
     return textwrap.wrap(
         text,
@@ -424,13 +425,30 @@ class PaperRenderer:
         headers = block.cells[0]
         rows = block.cells[1:]
         n_cols = len(headers)
-        col_w = CONTENT_W / max(1, n_cols)
+        col_weights = [
+            max(
+                0.55,
+                min(2.1, max(len(row[c_i]) for row in block.cells if c_i < len(row)) / 15),
+            )
+            for c_i in range(n_cols)
+        ]
+        total_weight = sum(col_weights) or 1
+        col_widths = [CONTENT_W * weight / total_weight for weight in col_weights]
         font_size = 7.0 if n_cols >= 6 else 7.8
         line_h = font_size / 72 * 1.30
+        cell_pad = 0.06
         row_heights = []
         wrapped_rows = []
         for row in [headers] + rows:
-            wrapped = [wrap_text(cell, font_size, width=col_w - 0.08) for cell in row]
+            wrapped = [
+                wrap_text(
+                    cell,
+                    font_size,
+                    width=col_widths[c_i] - (cell_pad * 2),
+                    min_chars=8,
+                )
+                for c_i, cell in enumerate(row)
+            ]
             wrapped_rows.append(wrapped)
             row_heights.append(max(len(cell_lines) for cell_lines in wrapped) * line_h + 0.12)
         table_h = sum(row_heights) + 0.16
@@ -441,11 +459,12 @@ class PaperRenderer:
         for r_i, wrapped in enumerate(wrapped_rows):
             if r_i == 1:
                 self.line(LEFT, y + 0.04, PAGE_W - RIGHT, y + 0.04, RULE, 0.55)
+            x = LEFT
             for c_i, cell_lines in enumerate(wrapped):
-                x = LEFT + c_i * col_w
+                cell_x = x + cell_pad
                 for l_i, line in enumerate(cell_lines):
                     self.text(
-                        x,
+                        cell_x,
                         y - l_i * line_h,
                         line,
                         size=font_size,
@@ -453,6 +472,7 @@ class PaperRenderer:
                         weight="bold" if r_i == 0 else "normal",
                         color=INK if r_i == 0 else MUTED,
                     )
+                x += col_widths[c_i]
             y -= row_heights[r_i]
         self.line(LEFT, y + 0.02, PAGE_W - RIGHT, y + 0.02, INK, 0.55)
         self.y = y - 0.18
