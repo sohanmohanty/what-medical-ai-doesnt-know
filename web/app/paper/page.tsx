@@ -1,3 +1,5 @@
+const paperPdfUrl = "/paper.pdf?v=2026-06-08-table-layout";
+
 export default function PaperPage() {
   return (
     <div className="space-y-10 pb-20">
@@ -25,10 +27,10 @@ export default function PaperPage() {
               to evaluate the statistical and experimental rigor of the project.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <a className="button-primary" href="/paper.pdf" rel="noopener noreferrer" target="_blank">
+              <a className="button-primary" href={paperPdfUrl} rel="noopener noreferrer" target="_blank">
                 Open the PDF
               </a>
-              <a className="button-secondary" href="/paper.pdf" download>
+              <a className="button-secondary" href={paperPdfUrl} download>
                 Download PDF
               </a>
             </div>
